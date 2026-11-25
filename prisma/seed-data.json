@@ -2001,13 +2001,29 @@
       "customerId": "CEP",
       "customerName": "PT CEP",
       "pbmRatePerTon": 10500,
+      "pbmEksporUsdPerTon": 0.75,
       "fenderFee": 400,
       "mooringFee": 500,
       "fenderMooringFee": 900,
+      "waitingTkbmPerHour": 137500,
+      "demurrageMooringPerDay": 12000000,
+      "pnbpAlatBerat": 35000000,
       "pnbpBarangType": "Bebas PNBP (Jetty CEP)",
       "pnbpBarangAmount": 0,
       "status": "Aktif",
-      "notes": "Jasa Bongkar Muat Lokal Rp 10.500/MT; Ekspor USD 0,75/MT x Kurs Final. Fender Rp 400/MT, Mooring Rp 500/MT. Waiting TKBM Rp 137.500/jam, Demurrage Team Mooring Rp 12.000.000/hari. Jetty CEP bebas PNBP barang. (Masterdata Monrep 2026)"
+      "notes": "Jasa Bongkar Muat Lokal Rp 10.500/MT; Ekspor USD 0,75/MT x Kurs Final. Fender Rp 400/MT, Mooring Rp 500/MT. Waiting TKBM Rp 137.500/jam, Demurrage Team Mooring Rp 12.000.000/hari (>7 hari). Jetty CEP bebas PNBP Jasa PBM Rp 62,31/MT. (Masterdata Monrep 2026)"
+    },
+    {
+      "id": "RATE-CEP-004",
+      "service": "LAYANAN PBM",
+      "location": "Muara Jawa",
+      "customerId": "CEP",
+      "customerName": "PT CEP",
+      "pbmRatePerTon": 10800,
+      "pnbpBarangType": "Standar",
+      "pnbpAlatBerat": 35000000,
+      "status": "Aktif",
+      "notes": "Harga Acuan Muara Jawa: Jasa Bongkar Muat Lokal Rp 10.800/MT, PNBP Pengawasan Rp 47,13/MT, PNBP STS Rp 600/MT, PNBP Alat Berat Rp 35.000.000. (Masterdata Monrep 2026)"
     },
     {
       "id": "RATE-CEP-002",
@@ -2049,6 +2065,33 @@
       "chargeUnit": "/Document",
       "status": "Aktif",
       "notes": "PPJK Rp 12 Juta/dokumen via tongkang LL series."
+    },
+    {
+      "id": "RATE-AEI-002",
+      "service": "LAYANAN PBM",
+      "location": "Muara Berau",
+      "customerId": "AEI",
+      "customerName": "PT AEI",
+      "pbmRatePerTon": 10500,
+      "pbmEksporUsdPerTon": 0.75,
+      "fenderFee": 400,
+      "mooringFee": 500,
+      "fenderMooringFee": 900,
+      "waitingTkbmPerHour": 112500,
+      "demurrageMooringPerDay": 8000000,
+      "status": "Aktif",
+      "notes": "Jasa Bongkar Muat Lokal Rp 10.500/MT; Ekspor USD 0,75/MT x Kurs Final. Waiting TKBM Rp 112.500/jam, Demurrage Team Mooring Rp 8.000.000/hari (>7 hari). (Masterdata Monrep 2026)"
+    },
+    {
+      "id": "RATE-AMP-001",
+      "service": "JASA PENGAWASAN KEPABEANAN & COO",
+      "location": "Muara Berau",
+      "customerId": "AMP",
+      "customerName": "PT AMP",
+      "kepabeananFee": 10000000,
+      "chargeUnit": "/Document",
+      "status": "Aktif",
+      "notes": "Harga Acuan PPJK >1 Juli 2025 (To AMP) Rp 10.000.000/dokumen. (Masterdata Monrep 2026)"
     },
     {
       "id": "RATE-PTB-001",
