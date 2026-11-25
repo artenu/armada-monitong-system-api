@@ -1,0 +1,1254 @@
+{
+  "masterData": {
+    "customer": [
+      {
+        "id": "1",
+        "kode": "CEP",
+        "nama": "PT CEP",
+        "namaLengkap": "PT Cristian Eka Pratama",
+        "bidangUsaha": "Tambang batu bara Kutai Barat (Petrosea Group).",
+        "status": "Aktif"
+      },
+      {
+        "id": "2",
+        "kode": "AEI",
+        "nama": "PT AEI",
+        "namaLengkap": "PT Alfa Energi Investama Tbk",
+        "bidangUsaha": "Produsen & eksportir batu bara Kaltim.",
+        "status": "Aktif"
+      },
+      {
+        "id": "3",
+        "kode": "ADP",
+        "nama": "PT ADP",
+        "namaLengkap": "PT Alfara Delta Persada",
+        "bidangUsaha": "Pertambangan batu bara Anggana, Kutai Kartanegara.",
+        "status": "Aktif"
+      },
+      {
+        "id": "4",
+        "kode": "KS",
+        "nama": "PT KS",
+        "namaLengkap": "PT Kedap Sayaaq",
+        "bidangUsaha": "Tambang batu bara & pasokan PLTU/Pabrik Semen.",
+        "status": "Aktif"
+      },
+      {
+        "id": "5",
+        "kode": "PTB",
+        "nama": "PT BUP PTB",
+        "namaLengkap": "PT Pelabuhan Tiga Bersaudara",
+        "bidangUsaha": "Badan Usaha Pelabuhan (BUP) STS Muara Berau.",
+        "status": "Aktif"
+      },
+      {
+        "id": "6",
+        "kode": "AMP",
+        "nama": "PT AMP",
+        "namaLengkap": "PT Antara Multi Perkasa",
+        "bidangUsaha": "Perusahaan Bongkar Muat (PBM) & Logistik Maritim.",
+        "status": "Aktif"
+      },
+      {
+        "id": "7",
+        "kode": "ACI",
+        "nama": "PT ACI",
+        "namaLengkap": "PT Anugerah Covindo Indonesia",
+        "bidangUsaha": "Kontraktor & trader batu bara Kaltim.",
+        "status": "Aktif"
+      },
+      {
+        "id": "8",
+        "kode": "MRM",
+        "nama": "PT MRM",
+        "namaLengkap": "PT Melawi Rimba Minerals",
+        "bidangUsaha": "Pertambangan mineral & batu bara.",
+        "status": "Aktif"
+      },
+      {
+        "id": "9",
+        "kode": "ZMA",
+        "nama": "PT ZADIN",
+        "namaLengkap": "PT Zadin Mitra Abadi",
+        "bidangUsaha": "Keagenan kapal & logistik maritim Samarinda.",
+        "status": "Aktif"
+      },
+      {
+        "id": "10",
+        "kode": "PST",
+        "nama": "Pelsus PT Semen Tonasa",
+        "namaLengkap": "PT Semen Tonasa",
+        "bidangUsaha": "Pabrik Semen & Dermaga Khusus.",
+        "status": "Aktif"
+      },
+      {
+        "id": "11",
+        "kode": "SBI",
+        "nama": "PT Solusi Bangun Indonesia, TBK",
+        "namaLengkap": "PT Solusi Bangun Indonesia Tbk",
+        "bidangUsaha": "Produsen Semen (Dynamix).",
+        "status": "Aktif"
+      },
+      {
+        "id": "12",
+        "kode": "PEJ",
+        "nama": "PLTU Paiton Energy",
+        "namaLengkap": "PT Paiton Energy Private Jetty",
+        "bidangUsaha": "Pembangkit Listrik Tenaga Uap Jawa Timur.",
+        "status": "Aktif"
+      }
+    ],
+    "tug-boat": [
+      {
+        "id": "TB-01",
+        "kode": "TB-01",
+        "nama": "TB. HARMONY XIX",
+        "subDetail": "Armada - 2.400 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-02",
+        "kode": "TB-02",
+        "nama": "TB. HARMONY XXVII",
+        "subDetail": "Armada - 2.400 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-03",
+        "kode": "TB-03",
+        "nama": "TB. HARMONY I",
+        "subDetail": "Armada - 2.200 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-04",
+        "kode": "TB-04",
+        "nama": "TB. HARMONY II",
+        "subDetail": "Armada - 2.200 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-05",
+        "kode": "TB-05",
+        "nama": "TB. HARMONY III",
+        "subDetail": "Armada - 2.000 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-06",
+        "kode": "TB-06",
+        "nama": "TB. HARMONY XV",
+        "subDetail": "Armada - 2.400 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-07",
+        "kode": "TB-07",
+        "nama": "TB. HARMONY XVI",
+        "subDetail": "Armada - 2.400 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-08",
+        "kode": "TB-08",
+        "nama": "TB. HARMONY XVII",
+        "subDetail": "Armada - 2.400 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-09",
+        "kode": "TB-09",
+        "nama": "TB. HARMONY XVIII",
+        "subDetail": "Armada - 2.400 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-10",
+        "kode": "TB-10",
+        "nama": "TB. HARMONY XXVI",
+        "subDetail": "Armada - 2.400 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-11",
+        "kode": "TB-11",
+        "nama": "TB. HARMONY XXVIII",
+        "subDetail": "Armada - 2.400 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-12",
+        "kode": "TB-12",
+        "nama": "TB. HARMONY 55",
+        "subDetail": "Armada - 2.000 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-13",
+        "kode": "TB-13",
+        "nama": "TB. HARMONY 59",
+        "subDetail": "Armada - 2.200 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-14",
+        "kode": "TB-14",
+        "nama": "TB. WIRATIMUR 1110",
+        "subDetail": "Wiratimur - 2.200 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-15",
+        "kode": "TB-15",
+        "nama": "TB. WIRATIMUR 1002",
+        "subDetail": "Wiratimur - 2.200 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-16",
+        "kode": "TB-16",
+        "nama": "TB. WIRATIMUR 1120",
+        "subDetail": "Wiratimur - 2.000 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-17",
+        "kode": "TB-17",
+        "nama": "TB. WIRATIMUR 1121",
+        "subDetail": "Wiratimur - 2.200 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-18",
+        "kode": "TB-18",
+        "nama": "TB. DELTA AYU 118",
+        "subDetail": "Delta Ayu - 2.400 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-19",
+        "kode": "TB-19",
+        "nama": "TB. DELTA AYU 158",
+        "subDetail": "Delta Ayu - 2.400 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-20",
+        "kode": "TB-20",
+        "nama": "TB. DELTA AYU 238",
+        "subDetail": "Delta Ayu - 2.200 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-21",
+        "kode": "TB-21",
+        "nama": "TB. DELTA AYU 288",
+        "subDetail": "Delta Ayu - 2.200 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-22",
+        "kode": "TB-22",
+        "nama": "TB. DELTA AYU 668",
+        "subDetail": "Delta Ayu - 2.400 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-23",
+        "kode": "TB-23",
+        "nama": "TB. DELTA AYU 58",
+        "subDetail": "Delta Ayu - 2.200 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-24",
+        "kode": "TB-24",
+        "nama": "TB. DELTA CAHAYA 1",
+        "subDetail": "Delta Cahaya - 2.200 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-25",
+        "kode": "TB-25",
+        "nama": "TB. DELTA CAHAYA 18",
+        "subDetail": "Delta Cahaya - 2.400 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-26",
+        "kode": "TB-26",
+        "nama": "TB. LINTAS SAMUDERA X",
+        "subDetail": "LSE - 2.400 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-27",
+        "kode": "TB-27",
+        "nama": "TB. LINTAS SAMUDERA 151",
+        "subDetail": "LSE - 2.400 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-28",
+        "kode": "TB-28",
+        "nama": "TB. LINTAS SAMUDERA 31",
+        "subDetail": "LSE - 2.200 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-29",
+        "kode": "TB-29",
+        "nama": "TB. LINTAS SAMUDERA XXVIII",
+        "subDetail": "LSE - 2.400 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-30",
+        "kode": "TB-30",
+        "nama": "TB. ARMADA TIMUR 03",
+        "subDetail": "Armada Timur - 2.000 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-31",
+        "kode": "TB-31",
+        "nama": "TB. KARYA STAR 38",
+        "subDetail": "Karya Star - 2.000 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-32",
+        "kode": "TB-32",
+        "nama": "TB. KARYA STAR 66",
+        "subDetail": "Karya Star - 2.200 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-33",
+        "kode": "TB-33",
+        "nama": "TB. KARYA STAR 93",
+        "subDetail": "Karya Star - 2.400 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-34",
+        "kode": "TB-34",
+        "nama": "TB. SUPER STAR 5",
+        "subDetail": "Super Star - 2.200 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-35",
+        "kode": "TB-35",
+        "nama": "TB. SUPER STAR 9",
+        "subDetail": "Super Star - 2.200 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-36",
+        "kode": "TB-36",
+        "nama": "TB. SAFARI 07",
+        "subDetail": "Safari - 2.000 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-37",
+        "kode": "TB-37",
+        "nama": "TB. SAFARI 10",
+        "subDetail": "Safari - 2.200 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-38",
+        "kode": "TB-38",
+        "nama": "TB. SAFARI 11",
+        "subDetail": "Safari - 2.200 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-39",
+        "kode": "TB-39",
+        "nama": "TB. SYUKUR 30",
+        "subDetail": "Syukur - 2.000 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-40",
+        "kode": "TB-40",
+        "nama": "TB. SYUKUR 72",
+        "subDetail": "Syukur - 2.200 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-41",
+        "kode": "TB-41",
+        "nama": "TB. LL ROCKY",
+        "subDetail": "AEI Fleet - 2.400 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-42",
+        "kode": "TB-42",
+        "nama": "TB. LL CHEN NIE",
+        "subDetail": "AEI Fleet - 2.400 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-43",
+        "kode": "TB-43",
+        "nama": "TB. LL ERLIN",
+        "subDetail": "AEI Fleet - 2.200 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-44",
+        "kode": "TB-44",
+        "nama": "TB. VARUNA",
+        "subDetail": "Varuna - 2.000 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-45",
+        "kode": "TB-45",
+        "nama": "TB. PERMATA KALTIM I",
+        "subDetail": "Permata Kaltim - 2.200 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-46",
+        "kode": "TB-46",
+        "nama": "TB. METEOR 10",
+        "subDetail": "Meteor - 2.200 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-47",
+        "kode": "TB-47",
+        "nama": "TB. DOLPHIN 38",
+        "subDetail": "Dolphin - 2.200 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-48",
+        "kode": "TB-48",
+        "nama": "TB. DOLPHIN 68",
+        "subDetail": "Dolphin - 2.400 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-49",
+        "kode": "TB-49",
+        "nama": "TB. PUTRA RUPAT I",
+        "subDetail": "Putra Rupat - 2.200 HP",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-50",
+        "kode": "TB-50",
+        "nama": "TB. PUTRA RUPAT II",
+        "subDetail": "Putra Rupat - 2.200 HP",
+        "status": "Aktif"
+      }
+    ],
+    "barge": [
+      {
+        "id": "BG-01",
+        "kode": "BG-01",
+        "nama": "BG. LINTAS SAMUDERA 88",
+        "subDetail": "300 Feet - 8.000 MT",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-02",
+        "kode": "BG-02",
+        "nama": "BG. LINTAS SAMUDERA 139",
+        "subDetail": "300 Feet - 8.000 MT",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-03",
+        "kode": "BG-03",
+        "nama": "BG. LINTAS SAMUDERA 73",
+        "subDetail": "300 Feet - 8.000 MT",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-04",
+        "kode": "BG-04",
+        "nama": "BG. LINTAS SAMUDERA 89",
+        "subDetail": "300 Feet - 8.000 MT",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-05",
+        "kode": "BG-05",
+        "nama": "BG. LINTAS SAMUDERA 95",
+        "subDetail": "300 Feet - 8.000 MT",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-06",
+        "kode": "BG-06",
+        "nama": "BG. LINTAS SAMUDERA 150",
+        "subDetail": "300 Feet - 8.000 MT",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-07",
+        "kode": "BG-07",
+        "nama": "BG. LINTAS SAMUDERA 76",
+        "subDetail": "300 Feet - 8.000 MT",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-08",
+        "kode": "BG-08",
+        "nama": "BG. LINTAS SAMUDERA 96",
+        "subDetail": "300 Feet - 8.000 MT",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-09",
+        "kode": "BG-09",
+        "nama": "BG. LINTAS SAMUDERA 135",
+        "subDetail": "300 Feet - 8.000 MT",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-10",
+        "kode": "BG-10",
+        "nama": "BG. LINTAS SAMUDERA 137",
+        "subDetail": "300 Feet - 8.000 MT",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-11",
+        "kode": "BG-11",
+        "nama": "BG. WIRATIMUR 3003",
+        "subDetail": "300 Feet - 8.000 MT",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-12",
+        "kode": "BG-12",
+        "nama": "BG. WIRATIMUR 3011",
+        "subDetail": "300 Feet - 8.000 MT",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-13",
+        "kode": "BG-13",
+        "nama": "BG. WIRATIMUR 3016A",
+        "subDetail": "300 Feet - 8.000 MT",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-14",
+        "kode": "BG-14",
+        "nama": "BG. WIRATIMUR 3017A",
+        "subDetail": "300 Feet - 8.000 MT",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-15",
+        "kode": "BG-15",
+        "nama": "BG. KALIMANTAN 158",
+        "subDetail": "270 Feet - 5.500 MT",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-16",
+        "kode": "BG-16",
+        "nama": "BG. KALIMANTAN 38",
+        "subDetail": "270 Feet - 5.500 MT",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-17",
+        "kode": "BG-17",
+        "nama": "BG. KALIMANTAN 108",
+        "subDetail": "270 Feet - 5.500 MT",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-18",
+        "kode": "BG-18",
+        "nama": "BG. KALIMANTAN ABADI 01",
+        "subDetail": "300 Feet - 8.000 MT",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-19",
+        "kode": "BG-19",
+        "nama": "BG. KALIMANTAN ABADI 10",
+        "subDetail": "300 Feet - 8.000 MT",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-20",
+        "kode": "BG-20",
+        "nama": "BG. KALIMANTAN CAHAYA 28",
+        "subDetail": "300 Feet - 8.000 MT",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-21",
+        "kode": "BG-21",
+        "nama": "BG. SUMBER SAMUDERA 01",
+        "subDetail": "300 Feet - 8.000 MT",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-22",
+        "kode": "BG-22",
+        "nama": "BG. SUMBER SAMUDERA 05",
+        "subDetail": "300 Feet - 8.000 MT",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-23",
+        "kode": "BG-23",
+        "nama": "BG. SUMBER SAMUDERA 09",
+        "subDetail": "300 Feet - 8.000 MT",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-24",
+        "kode": "BG-24",
+        "nama": "BG. BAHARI JAYA 300",
+        "subDetail": "300 Feet - 8.000 MT",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-25",
+        "kode": "BG-25",
+        "nama": "BG. BROTHERHOOD I",
+        "subDetail": "300 Feet - 8.000 MT",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-26",
+        "kode": "BG-26",
+        "nama": "BG. LL 3008",
+        "subDetail": "300 Feet - 8.000 MT",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-27",
+        "kode": "BG-27",
+        "nama": "BG. LL 3028",
+        "subDetail": "300 Feet - 8.000 MT",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-28",
+        "kode": "BG-28",
+        "nama": "BG. LL 3012",
+        "subDetail": "300 Feet - 8.000 MT",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-29",
+        "kode": "BG-29",
+        "nama": "BG. DAHLIA SAMUDERA 07",
+        "subDetail": "300 Feet - 8.000 MT",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-30",
+        "kode": "BG-30",
+        "nama": "BG. AMANAH 11",
+        "subDetail": "300 Feet - 8.000 MT",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-31",
+        "kode": "BG-31",
+        "nama": "BG. ADI MULIA 10",
+        "subDetail": "300 Feet - 8.000 MT",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-32",
+        "kode": "BG-32",
+        "nama": "BG. SYUKUR 29",
+        "subDetail": "300 Feet - 8.000 MT",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-33",
+        "kode": "BG-33",
+        "nama": "BG. SYUKUR 37",
+        "subDetail": "300 Feet - 8.000 MT",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-34",
+        "kode": "BG-34",
+        "nama": "BG. KBT 30",
+        "subDetail": "300 Feet - 8.000 MT",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-35",
+        "kode": "BG-35",
+        "nama": "BG. BKT 302",
+        "subDetail": "300 Feet - 8.000 MT",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-36",
+        "kode": "BG-36",
+        "nama": "BG. TANJUNG MEDANG I",
+        "subDetail": "300 Feet - 8.000 MT",
+        "status": "Aktif"
+      }
+    ],
+    "lokasi": [
+      {
+        "id": "1",
+        "kode": "LOK-001",
+        "nama": "Muara Berau",
+        "subDetail": "Area Transhipment STS Laut Lepas",
+        "status": "Aktif"
+      },
+      {
+        "id": "2",
+        "kode": "LOK-002",
+        "nama": "Muara Jawa",
+        "subDetail": "Area Sungai & Muara Kutai",
+        "status": "Aktif"
+      },
+      {
+        "id": "3",
+        "kode": "LOK-003",
+        "nama": "Kalaq",
+        "subDetail": "Area Sungai Mahakam",
+        "status": "Aktif"
+      },
+      {
+        "id": "4",
+        "kode": "LOK-004",
+        "nama": "Tukul",
+        "subDetail": "Area Pangkalan Armada",
+        "status": "Aktif"
+      },
+      {
+        "id": "5",
+        "kode": "LOK-005",
+        "nama": "Jetty CEP",
+        "subDetail": "Private Jetty Tambang PT CEP",
+        "status": "Aktif"
+      },
+      {
+        "id": "6",
+        "kode": "LOK-006",
+        "nama": "Pelabuhan Maspion",
+        "subDetail": "Gresik, Jawa Timur",
+        "status": "Aktif"
+      },
+      {
+        "id": "7",
+        "kode": "LOK-007",
+        "nama": "PLTU Paiton",
+        "subDetail": "Paiton, Probolinggo",
+        "status": "Aktif"
+      }
+    ],
+    "drop-point": [
+      {
+        "id": "1",
+        "kode": "LOC-001",
+        "nama": "Muara Berau",
+        "subDetail": "Transhipment STS",
+        "status": "Aktif"
+      },
+      {
+        "id": "2",
+        "kode": "LOC-002",
+        "nama": "Muara Jawa",
+        "subDetail": "Transhipment STS",
+        "status": "Aktif"
+      },
+      {
+        "id": "3",
+        "kode": "LOC-003",
+        "nama": "Pelabuhan Maspion",
+        "subDetail": "Dermaga Bongkar Industri",
+        "status": "Aktif"
+      },
+      {
+        "id": "4",
+        "kode": "LOC-004",
+        "nama": "PLTU Paiton Energy",
+        "subDetail": "Private Jetty Paiton",
+        "status": "Aktif"
+      },
+      {
+        "id": "5",
+        "kode": "LOC-005",
+        "nama": "PLTU Lontar 4",
+        "subDetail": "Tangerang, Banten",
+        "status": "Aktif"
+      },
+      {
+        "id": "6",
+        "kode": "LOC-006",
+        "nama": "PLTU Indramayu",
+        "subDetail": "Indramayu, Jawa Barat",
+        "status": "Aktif"
+      },
+      {
+        "id": "7",
+        "kode": "LOC-007",
+        "nama": "Pelsus PT Semen Tonasa",
+        "subDetail": "Biringkassi, Sulsel",
+        "status": "Aktif"
+      }
+    ],
+    "pol": [
+      {
+        "id": "1",
+        "kode": "POL-001",
+        "nama": "Muara Berau",
+        "subDetail": "Port of Loading STS",
+        "status": "Aktif"
+      },
+      {
+        "id": "2",
+        "kode": "POL-002",
+        "nama": "Muara Jawa",
+        "subDetail": "Port of Loading STS",
+        "status": "Aktif"
+      },
+      {
+        "id": "3",
+        "kode": "POL-003",
+        "nama": "Jetty CEP",
+        "subDetail": "Jetty Muat Tambang",
+        "status": "Aktif"
+      },
+      {
+        "id": "4",
+        "kode": "POL-004",
+        "nama": "Jetty BET",
+        "subDetail": "Jetty Muat Tambang",
+        "status": "Aktif"
+      }
+    ],
+    "pod": [
+      {
+        "id": "1",
+        "kode": "POD-001",
+        "nama": "PLTU Paiton",
+        "subDetail": "Jawa Timur",
+        "status": "Aktif"
+      },
+      {
+        "id": "2",
+        "kode": "POD-002",
+        "nama": "Pelabuhan Maspion",
+        "subDetail": "Gresik",
+        "status": "Aktif"
+      },
+      {
+        "id": "3",
+        "kode": "POD-003",
+        "nama": "PLTU Muara Jawa",
+        "subDetail": "Kaltim",
+        "status": "Aktif"
+      },
+      {
+        "id": "4",
+        "kode": "POD-004",
+        "nama": "PLTU Indramayu",
+        "subDetail": "Jawa Barat",
+        "status": "Aktif"
+      },
+      {
+        "id": "5",
+        "kode": "POD-005",
+        "nama": "PLTU Lontar 4",
+        "subDetail": "Banten",
+        "status": "Aktif"
+      },
+      {
+        "id": "6",
+        "kode": "POD-006",
+        "nama": "Pelsus Semen Tonasa",
+        "subDetail": "Sulawesi Selatan",
+        "status": "Aktif"
+      },
+      {
+        "id": "7",
+        "kode": "POD-007",
+        "nama": "Taboneo STS",
+        "subDetail": "Kalimantan Selatan",
+        "status": "Aktif"
+      },
+      {
+        "id": "13",
+        "kode": "POD-013",
+        "nama": "Lainnya",
+        "subDetail": "Pelabuhan / Dermaga Tujuan Lainnya",
+        "status": "Aktif"
+      }
+    ],
+    "agen": [
+      {
+        "id": "1",
+        "kode": "AGN-001",
+        "nama": "PT DUTA LINTAS SAMUDERA",
+        "subDetail": "Samarinda",
+        "status": "Aktif"
+      },
+      {
+        "id": "2",
+        "kode": "AGN-002",
+        "nama": "PT AYU",
+        "subDetail": "Balikpapan",
+        "status": "Aktif"
+      },
+      {
+        "id": "3",
+        "kode": "AGN-003",
+        "nama": "PT. REZEKI HUDA BERSAMA",
+        "subDetail": "Banjarmasin",
+        "status": "Aktif"
+      },
+      {
+        "id": "4",
+        "kode": "AGN-004",
+        "nama": "PT LINTAS SAMUDERA ENERGI",
+        "subDetail": "Samarinda",
+        "status": "Aktif"
+      }
+    ],
+    "vessel": [
+      {
+        "id": "1",
+        "kode": "MV-001",
+        "nama": "MV. LARUS",
+        "subDetail": "Bulk Carrier - Supramax",
+        "status": "Aktif"
+      },
+      {
+        "id": "2",
+        "kode": "MV-002",
+        "nama": "MV. TRANS SPRING",
+        "subDetail": "Bulk Carrier - Panamax",
+        "status": "Aktif"
+      },
+      {
+        "id": "3",
+        "kode": "MV-003",
+        "nama": "MV. PAN VIGOR",
+        "subDetail": "Bulk Carrier",
+        "status": "Aktif"
+      },
+      {
+        "id": "4",
+        "kode": "MV-004",
+        "nama": "MV. STAR JANET",
+        "subDetail": "Bulk Carrier",
+        "status": "Aktif"
+      },
+      {
+        "id": "5",
+        "kode": "MV-005",
+        "nama": "MV. DARYA SHANTI",
+        "subDetail": "Bulk Carrier",
+        "status": "Aktif"
+      },
+      {
+        "id": "6",
+        "kode": "MV-006",
+        "nama": "MV ABDUL HAMID",
+        "subDetail": "Bulk Carrier",
+        "status": "Aktif"
+      },
+      {
+        "id": "7",
+        "kode": "MV-007",
+        "nama": "MV AFRIANE AYU",
+        "subDetail": "Bulk Carrier",
+        "status": "Aktif"
+      },
+      {
+        "id": "8",
+        "kode": "MV-008",
+        "nama": "MV ALESSANDRA M",
+        "subDetail": "Bulk Carrier",
+        "status": "Aktif"
+      },
+      {
+        "id": "9",
+        "kode": "MV-009",
+        "nama": "MV AMAN SUKSES",
+        "subDetail": "Bulk Carrier",
+        "status": "Aktif"
+      },
+      {
+        "id": "10",
+        "kode": "MV-010",
+        "nama": "MV ASIAN WISDOM",
+        "subDetail": "Bulk Carrier",
+        "status": "Aktif"
+      },
+      {
+        "id": "11",
+        "kode": "MV-011",
+        "nama": "MV BERGE KAIZAN",
+        "subDetail": "Bulk Carrier - Capesize",
+        "status": "Aktif"
+      },
+      {
+        "id": "12",
+        "kode": "MV-012",
+        "nama": "MV BULK NUSANTARA",
+        "subDetail": "Bulk Carrier",
+        "status": "Aktif"
+      },
+      {
+        "id": "13",
+        "kode": "MV-013",
+        "nama": "MV EMERALD INDAH",
+        "subDetail": "Bulk Carrier",
+        "status": "Aktif"
+      },
+      {
+        "id": "14",
+        "kode": "MV-014",
+        "nama": "MV GLOBAL WINNER",
+        "subDetail": "Bulk Carrier",
+        "status": "Aktif"
+      },
+      {
+        "id": "15",
+        "kode": "MV-015",
+        "nama": "MV HABCO AQUILA",
+        "subDetail": "Bulk Carrier",
+        "status": "Aktif"
+      },
+      {
+        "id": "16",
+        "kode": "MV-016",
+        "nama": "MV HENG XING FA ZHAN",
+        "subDetail": "Bulk Carrier",
+        "status": "Aktif"
+      },
+      {
+        "id": "17",
+        "kode": "MV-017",
+        "nama": "MV IMS JAKARTA",
+        "subDetail": "Bulk Carrier",
+        "status": "Aktif"
+      },
+      {
+        "id": "18",
+        "kode": "MV-018",
+        "nama": "MV KAREEM",
+        "subDetail": "Bulk Carrier",
+        "status": "Aktif"
+      },
+      {
+        "id": "19",
+        "kode": "MV-019",
+        "nama": "MV LUMOSO ALAM",
+        "subDetail": "Bulk Carrier",
+        "status": "Aktif"
+      },
+      {
+        "id": "20",
+        "kode": "MV-020",
+        "nama": "MV LUMOSO DAMAI",
+        "subDetail": "Bulk Carrier",
+        "status": "Aktif"
+      },
+      {
+        "id": "21",
+        "kode": "MV-021",
+        "nama": "MV LUMOSO HAWAR",
+        "subDetail": "Bulk Carrier",
+        "status": "Aktif"
+      },
+      {
+        "id": "22",
+        "kode": "MV-022",
+        "nama": "MV LUMOSO LANCAR",
+        "subDetail": "Bulk Carrier",
+        "status": "Aktif"
+      },
+      {
+        "id": "23",
+        "kode": "MV-023",
+        "nama": "MV LUMOSO PROSPER",
+        "subDetail": "Bulk Carrier",
+        "status": "Aktif"
+      },
+      {
+        "id": "24",
+        "kode": "MV-024",
+        "nama": "MV MANALAGI ASTI",
+        "subDetail": "Bulk Carrier",
+        "status": "Aktif"
+      },
+      {
+        "id": "25",
+        "kode": "MV-025",
+        "nama": "MV MERIT TRADER",
+        "subDetail": "Bulk Carrier",
+        "status": "Aktif"
+      }
+    ]
+  },
+  "contractRates": [
+    {
+      "id": "RATE-CEP-001",
+      "service": "LAYANAN PBM",
+      "location": "Muara Berau",
+      "customerId": "CEP",
+      "customerName": "PT CEP",
+      "pbmRatePerTon": 10500,
+      "fenderFee": 400,
+      "mooringFee": 500,
+      "fenderMooringFee": 900,
+      "pnbpBarangType": "Bebas PNBP (Jetty CEP)",
+      "pnbpBarangAmount": 0,
+      "status": "Aktif",
+      "notes": "PBM Rp 10.500/MT, Fender 400/MT, Mooring 500/MT. Jetty CEP bebas PNBP barang."
+    },
+    {
+      "id": "RATE-CEP-002",
+      "service": "LAYANAN RKBM MUAT/BONGKAR/MUAT & BONGKAR",
+      "location": "Muara Berau",
+      "customerId": "CEP",
+      "customerName": "PT CEP",
+      "rkbmMuatPrivateFee": 250,
+      "rkbmMuatPublicFee": 350000,
+      "rkbmBongkarFee": 500000,
+      "chargeUnit": "/MT",
+      "status": "Aktif",
+      "notes": "RKBM Muat Rp 250/MT DSR, RKBM Bongkar Rp 500.000 flat."
+    },
+    {
+      "id": "RATE-CEP-003",
+      "service": "JASA PENGAWASAN KEPABEANAN & COO",
+      "location": "Muara Berau",
+      "customerId": "CEP",
+      "customerName": "PT CEP",
+      "kepabeananFee": 10000000,
+      "cooFee": 2000000,
+      "chargeUnit": "/Document",
+      "status": "Aktif",
+      "notes": "PPJK Rp 10 Juta/dokumen, COO Rp 2 Juta."
+    },
+    {
+      "id": "RATE-AEI-001",
+      "service": "JASA PENGAWASAN KEPABEANAN & COO",
+      "location": "Muara Berau",
+      "customerId": "AEI",
+      "customerName": "PT AEI",
+      "kepabeananFee": 12000000,
+      "cooFee": 2000000,
+      "chargeUnit": "/Document",
+      "status": "Aktif",
+      "notes": "PPJK Rp 12 Juta/dokumen via tongkang LL series."
+    },
+    {
+      "id": "RATE-PTB-001",
+      "service": "LAYANAN PBM",
+      "location": "Muara Berau",
+      "customerId": "PTB",
+      "customerName": "PT BUP PTB",
+      "pbmRatePerTon": 11000,
+      "fenderFee": 400,
+      "mooringFee": 500,
+      "fenderMooringFee": 900,
+      "pnbpBarangType": "Gratis",
+      "pnbpPengawasanType": "Gratis",
+      "status": "Aktif",
+      "notes": "Tarif BUP PTB Rp 11.000/MT, PNBP gratis."
+    },
+    {
+      "id": "RATE-KS-001",
+      "service": "LAYANAN RKBM MUAT/BONGKAR/MUAT & BONGKAR",
+      "location": "Muara Jawa",
+      "customerId": "KS",
+      "customerName": "PT KS",
+      "rkbmMuatPrivateFee": 2625000,
+      "rkbmMuatPublicFee": 2625000,
+      "rkbmBongkarFee": 500000,
+      "chargeUnit": "/Lumpsum",
+      "status": "Aktif",
+      "notes": "Pengapalan semen & PLTU borongan Rp 2.625.000 s/d Rp 5.250.000."
+    },
+    {
+      "id": "RATE-ADP-001",
+      "service": "LAYANAN RKBM MUAT/BONGKAR/MUAT & BONGKAR",
+      "location": "Muara Berau",
+      "customerId": "ADP",
+      "customerName": "PT ADP",
+      "rkbmMuatPrivateFee": 350000,
+      "rkbmMuatPublicFee": 350000,
+      "rkbmBongkarFee": 500000,
+      "chargeUnit": "/Document",
+      "status": "Aktif",
+      "notes": "Tarif RKBM ADP Standar Rp 350.000 Muat, Rp 500.000 Bongkar."
+    }
+  ],
+  "pnbpPortRates": [
+    {
+      "id": "PNBP-MB-001",
+      "portName": "Muara Berau",
+      "barangEksporPerTon": 1400,
+      "barangDomestikPerTon": 700,
+      "pengawasanPerTon": 58.94,
+      "pbmPerTon": 62.31,
+      "alatBeratLumpsum": 35000000,
+      "skRef": "PP No. 15 Tahun 2016 / KSOP Muara Berau",
+      "notes": "STS Muara Berau (Ekspor Rp 1.400/MT, Lokal Rp 700/MT, Pengawasan Rp 58,94/MT).",
+      "docName": "SK_KSOP_Muara_Berau_PNBP.pdf",
+      "docUrl": "#",
+      "status": "Aktif"
+    },
+    {
+      "id": "PNBP-MJ-001",
+      "portName": "Muara Jawa",
+      "barangEksporPerTon": 1400,
+      "barangDomestikPerTon": 600,
+      "pengawasanPerTon": 47.13,
+      "pbmPerTon": 62.31,
+      "alatBeratLumpsum": 35000000,
+      "skRef": "PP No. 15 Tahun 2016 / KSOP Muara Jawa",
+      "notes": "STS Muara Jawa (Ekspor Rp 1.400/MT, Lokal Rp 600/MT, Pengawasan Rp 47,13/MT).",
+      "docName": "SK_KSOP_Muara_Jawa_PNBP.pdf",
+      "docUrl": "#",
+      "status": "Aktif"
+    },
+    {
+      "id": "PNBP-SMD-001",
+      "portName": "Samarinda",
+      "barangEksporPerTon": 1400,
+      "barangDomestikPerTon": 500,
+      "pengawasanPerTon": 54,
+      "pbmPerTon": 60,
+      "alatBeratLumpsum": 30000000,
+      "skRef": "KSOP Kelas II Samarinda",
+      "notes": "Wilayah Operasional Sungai Mahakam & Pangkalan Samarinda.",
+      "status": "Aktif"
+    },
+    {
+      "id": "PNBP-BPN-001",
+      "portName": "Balikpapan",
+      "barangEksporPerTon": 1400,
+      "barangDomestikPerTon": 650,
+      "pengawasanPerTon": 55,
+      "pbmPerTon": 62,
+      "alatBeratLumpsum": 35000000,
+      "skRef": "KSOP Kelas I Balikpapan",
+      "notes": "Wilayah Pelabuhan Semayang & Teluk Balikpapan.",
+      "status": "Aktif"
+    }
+  ]
+}

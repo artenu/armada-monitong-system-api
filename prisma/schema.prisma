@@ -1,0 +1,170 @@
+// Schema database Armada Monitoring System (GDS)
+// Konvensi (Standar Artenu v2.3): model PascalCase, tabel & kolom snake_case,
+// PK UUID, created_at/updated_at, waktu timestamptz (UTC).
+//
+// Strategi fleksibel: field inti yang dipakai untuk filter/aturan dijadikan kolom,
+// sisa field dari frontend (yang sering berubah mengikuti MOM) disimpan di kolom `data` (JSONB).
+// Dengan begitu perubahan form frontend tidak memaksa migrasi database.
+
+generator client {
+  provider            = "prisma-client"
+  output              = "../src/generated/prisma"
+  moduleFormat        = "esm"
+  importFileExtension = "js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum UserRole {
+  admin
+  sales
+  operasional
+  finance
+  sales_ops
+}
+
+enum ActiveStatus {
+  Aktif
+  Nonaktif
+}
+
+model User {
+  id           String       @id @default(uuid()) @db.Uuid
+  name         String
+  email        String       @unique // selalu disimpan lowercase
+  role         UserRole
+  department   String       @default("")
+  phone        String       @default("")
+  status       ActiveStatus @default(Aktif)
+  passwordHash String       @map("password_hash")
+  lastLoginAt  DateTime?    @map("last_login_at") @db.Timestamptz(3)
+  createdAt    DateTime     @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt    DateTime     @updatedAt @map("updated_at") @db.Timestamptz(3)
+
+  refreshTokens RefreshToken[]
+  orders        Order[]
+
+  @@map("users")
+}
+
+/// Refresh token disimpan dalam bentuk hash SHA-256 dan dirotasi setiap dipakai.
+/// Token lama yang dipakai ulang = indikasi pencurian -> seluruh family dicabut.
+model RefreshToken {
+  id        String    @id @default(uuid()) @db.Uuid
+  userId    String    @map("user_id") @db.Uuid
+  familyId  String    @map("family_id") @db.Uuid
+  tokenHash String    @unique @map("token_hash")
+  expiresAt DateTime  @map("expires_at") @db.Timestamptz(3)
+  revokedAt DateTime? @map("revoked_at") @db.Timestamptz(3)
+  userAgent String?   @map("user_agent")
+  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt DateTime  @updatedAt @map("updated_at") @db.Timestamptz(3)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([familyId])
+  @@map("refresh_tokens")
+}
+
+model Order {
+  id          String    @id @default(uuid()) @db.Uuid
+  /// Nomor job bisnis (JOB-YYYY-NNN), dibuat backend. Ditampilkan ke frontend sebagai `id`.
+  orderNo     String    @unique @map("order_no")
+  /// Status alur order (Draft Sales, Operational, Proses Muat, ...). String agar fleksibel.
+  status      String
+  customer    String
+  service     String
+  vessel      String?
+  startDate   DateTime? @map("start_date") @db.Date
+  /// Seluruh field OrderItem lainnya dari frontend.
+  data        Json
+  createdById String?   @map("created_by_id") @db.Uuid
+  createdAt   DateTime  @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt   DateTime  @updatedAt @map("updated_at") @db.Timestamptz(3)
+  deletedAt   DateTime? @map("deleted_at") @db.Timestamptz(3)
+
+  createdBy User? @relation(fields: [createdById], references: [id], onDelete: SetNull)
+
+  @@index([status])
+  @@index([customer])
+  @@index([deletedAt])
+  @@map("orders")
+}
+
+/// Master data generik: customer, tug-boat, barge, vessel, lokasi, pol, pod, agen, drop-point.
+model MasterItem {
+  id        String       @id @default(uuid()) @db.Uuid
+  resource  String
+  /// ID item dari sisi frontend (ditampilkan sebagai `id`).
+  itemId    String       @map("item_id")
+  kode      String
+  nama      String
+  status    ActiveStatus @default(Aktif)
+  position  Int          @default(0)
+  data      Json
+  createdAt DateTime     @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt DateTime     @updatedAt @map("updated_at") @db.Timestamptz(3)
+
+  @@unique([resource, itemId])
+  @@index([resource])
+  @@map("master_items")
+}
+
+model ContractRate {
+  id           String       @id @default(uuid()) @db.Uuid
+  rateId       String       @unique @map("rate_id")
+  customerName String       @map("customer_name")
+  service      String?
+  location     String?
+  status       ActiveStatus @default(Aktif)
+  position     Int          @default(0)
+  data         Json
+  createdAt    DateTime     @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt    DateTime     @updatedAt @map("updated_at") @db.Timestamptz(3)
+
+  @@map("contract_rates")
+}
+
+model PnbpPortRate {
+  id        String       @id @default(uuid()) @db.Uuid
+  rateId    String       @unique @map("rate_id")
+  portName  String       @map("port_name")
+  status    ActiveStatus @default(Aktif)
+  position  Int          @default(0)
+  data      Json
+  createdAt DateTime     @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt DateTime     @updatedAt @map("updated_at") @db.Timestamptz(3)
+
+  @@map("pnbp_port_rates")
+}
+
+model FileUpload {
+  id           String   @id @default(uuid()) @db.Uuid
+  originalName String   @map("original_name")
+  storedName   String   @unique @map("stored_name")
+  mimeType     String   @map("mime_type")
+  size         Int
+  uploadedById String?  @map("uploaded_by_id") @db.Uuid
+  createdAt    DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt    DateTime @updatedAt @map("updated_at") @db.Timestamptz(3)
+
+  @@map("file_uploads")
+}
+
+/// Jejak aktivitas penting (login, ubah user, perubahan status order, invoice, pembayaran).
+model AuditLog {
+  id        BigInt   @id @default(autoincrement())
+  userId    String?  @map("user_id") @db.Uuid
+  userName  String?  @map("user_name")
+  action    String
+  entity    String
+  entityId  String?  @map("entity_id")
+  detail    Json?
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  @@index([entity, entityId])
+  @@map("audit_logs")
+}
