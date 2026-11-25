@@ -7,7 +7,12 @@
         "nama": "PT CEP",
         "namaLengkap": "PT Cristian Eka Pratama",
         "bidangUsaha": "Tambang batu bara Kutai Barat (Petrosea Group).",
-        "status": "Aktif"
+        "status": "Aktif",
+        "kontak": "08382183214421",
+        "picName": "Hendra",
+        "subDetail": "",
+        "npwpDocUrl": "",
+        "npwpDocName": ""
       },
       {
         "id": "2",
@@ -23,7 +28,11 @@
         "nama": "PT ADP",
         "namaLengkap": "PT Alfara Delta Persada",
         "bidangUsaha": "Pertambangan batu bara Anggana, Kutai Kartanegara.",
-        "status": "Aktif"
+        "status": "Aktif",
+        "alamat": "Ruko Plaza 5 Blok D-12, Jl. Marga Guna Raya, RT 003 RW 011, Kebayoran Baru, Jakarta Selatan",
+        "alamatCabang": "Jl. Batara Agung Dewa Sakti, Ds. Kutai Lama, Kec. Anggana, Kab. Kutai Kartanegara, Kalimantan Timur",
+        "kontak": "021-7246966 / 0541-6753823",
+        "picName": "Dody Triyono (Direktur Utama)"
       },
       {
         "id": "4",
@@ -39,7 +48,8 @@
         "nama": "PT BUP PTB",
         "namaLengkap": "PT Pelabuhan Tiga Bersaudara",
         "bidangUsaha": "Badan Usaha Pelabuhan (BUP) STS Muara Berau.",
-        "status": "Aktif"
+        "status": "Aktif",
+        "alamat": "Komplek Rukan Kirana Boutique Office Blok E3 No.3, Jl. Boulevard Raya No.1, Kelapa Gading Timur, Jakarta Utara 14240"
       },
       {
         "id": "6",
@@ -71,7 +81,8 @@
         "nama": "PT ZADIN",
         "namaLengkap": "PT Zadin Mitra Abadi",
         "bidangUsaha": "Keagenan kapal & logistik maritim Samarinda.",
-        "status": "Aktif"
+        "status": "Aktif",
+        "alamat": "Jl. Niaga Timur I No. 10, Pelabuhan, Kota Samarinda, Kalimantan Timur 75112"
       },
       {
         "id": "10",
@@ -95,6 +106,14 @@
         "nama": "PLTU Paiton Energy",
         "namaLengkap": "PT Paiton Energy Private Jetty",
         "bidangUsaha": "Pembangkit Listrik Tenaga Uap Jawa Timur.",
+        "status": "Aktif"
+      },
+      {
+        "id": "13",
+        "kode": "BGE",
+        "nama": "PT BGE",
+        "namaLengkap": "PT Batubara Global Energy",
+        "bidangUsaha": "Perdagangan & pengangkutan batubara (IUP OPK).",
         "status": "Aktif"
       }
     ],
@@ -320,7 +339,7 @@
         "id": "TB-32",
         "kode": "TB-32",
         "nama": "TB. KARYA STAR 66",
-        "subDetail": "Karya Star - 2.200 HP",
+        "subDetail": "Karya Star - 2.200 HP - GT 239",
         "status": "Aktif"
       },
       {
@@ -882,7 +901,7 @@
         "id": "BG-21",
         "kode": "BG-21",
         "nama": "BG. SUMBER SAMUDERA 01",
-        "subDetail": "300 Feet - 8.000 MT",
+        "subDetail": "300 Feet - 8.000 MT - GT 3103",
         "status": "Aktif"
       },
       {
@@ -1508,6 +1527,20 @@
         "nama": "Jetty BET",
         "subDetail": "Jetty Muat Tambang",
         "status": "Aktif"
+      },
+      {
+        "id": "5",
+        "kode": "POL-005",
+        "nama": "Jetty ADP (Kutai Lama)",
+        "subDetail": "Dermaga II PT Alfara Delta Persada",
+        "status": "Aktif"
+      },
+      {
+        "id": "5",
+        "kode": "POL-005",
+        "nama": "Jetty Alfara Delta Persada",
+        "subDetail": "Kutai Lama, Dermaga II - Jetty Muat PT ADP",
+        "status": "Aktif"
       }
     ],
     "pod": [
@@ -2106,7 +2139,21 @@
       "pnbpBarangType": "Gratis",
       "pnbpPengawasanType": "Gratis",
       "status": "Aktif",
-      "notes": "Tarif BUP PTB Rp 11.000/MT, PNBP gratis."
+      "notes": "Tarif BUP PTB Lokal Rp 11.000/MT; Ekspor USD 0,75/MT x Kurs Final (Invoice 040/29062026/PTB/GSB: MV Ever Success 56.500 MT x 0,75 x Rp 17.962 = Rp 761.139.750). PNBP gratis.",
+      "pbmEksporUsdPerTon": 0.75
+    },
+    {
+      "id": "RATE-ZMA-001",
+      "service": "LAYANAN JASA FENDER & MOORING",
+      "location": "Muara Berau",
+      "customerId": "ZMA",
+      "customerName": "PT ZADIN",
+      "fenderFee": 400,
+      "mooringFee": 500,
+      "fenderMooringFee": 900,
+      "chargeUnit": "/MT",
+      "status": "Aktif",
+      "notes": "Jasa Fender & Mooring kapal PBM Muara Berau ditagihkan ke PT Zadin Mitra Abadi (invoice terpisah per jasa). Harga acuan Monrep: Fender Rp 400/MT, Mooring Rp 500/MT. Catatan: invoice 025 & 026/29062026/ZMA/GSB (MV Ever Success) memakai Fender 500 & Mooring 400."
     },
     {
       "id": "RATE-KS-001",
