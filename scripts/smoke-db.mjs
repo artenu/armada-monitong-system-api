@@ -6,7 +6,7 @@
 // Langkah:
 // 1. Buat ulang database test (DROP + CREATE) di server PostgreSQL yang sama
 // 2. Terapkan migrasi + seed (master data & akun uji dengan password tetap)
-// 3. Jalankan server dari dist/ di port 8001 dengan folder upload terpisah
+// 3. Jalankan server dari dist-check/ (bukan dist/ milik start:dev) di port 8001 dengan folder upload terpisah
 // 4. Jalankan scripts/smoke-test.mjs ke server itu, lalu matikan server
 //
 // Database test dibiarkan setelah selesai agar bisa diperiksa (pgAdmin / Prisma Studio);
@@ -51,8 +51,8 @@ testUrl.pathname = `/${TEST_DB}`;
 // karena bisa saja sudah dihapus.
 const adminUrl = devUrl;
 
-if (!existsSync(join(ROOT, 'dist', 'main.js'))) {
-  fail('dist/main.js belum ada. Jalankan "npm run build" dulu.');
+if (!existsSync(join(ROOT, 'dist-check', 'main.js'))) {
+  fail('dist-check/main.js belum ada. Jalankan "npm run build:check" dulu.');
 }
 
 const env = {
@@ -106,7 +106,10 @@ run('seed', [
 // 3. Server khusus test
 rmSync(join(ROOT, UPLOAD_DIR), { recursive: true, force: true });
 console.log(`[smoke] menyalakan server test di port ${PORT}...`);
-const server = spawn(process.execPath, ['dist/main.js'], { cwd: ROOT, env });
+const server = spawn(process.execPath, ['dist-check/main.js'], {
+  cwd: ROOT,
+  env,
+});
 let serverLog = '';
 let stopping = false;
 server.stdout.on('data', (chunk) => (serverLog += chunk));

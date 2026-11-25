@@ -1,0 +1,9 @@
+// Build untuk "npm run check" & "npm run smoke": output ke dist-check/ supaya tidak
+// menghapus dist/ yang sedang dipakai server development (npm run start:dev).
+{
+  "extends": "./tsconfig.build.json",
+  "compilerOptions": {
+    "outDir": "./dist-check"
+  },
+  "exclude": ["node_modules", "test", "dist", "dist-check", "**/*spec.ts"]
+}
