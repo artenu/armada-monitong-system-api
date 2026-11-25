@@ -5,6 +5,9 @@
 /uploads
 /uploads-smoke
 
+# Backup database & cermin uploads (data, bukan kode) - simpan juga di disk/lokasi lain
+/backups
+
 # compiled output
 /dist
 /node_modules

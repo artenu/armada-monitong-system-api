@@ -27,18 +27,21 @@ npm run start:dev             # http://localhost:8000/api/v1
 
 ## Script
 
-| Script                                 | Fungsi                                                                                                                                                     |
-| -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `npm run start:dev`                    | Server development (auto-reload)                                                                                                                           |
-| `npm run build` / `npm run start:prod` | Build lalu jalankan versi production                                                                                                                       |
-| `npm run db:up`                        | Nyalakan PostgreSQL development (Docker)                                                                                                                   |
-| `npm run db:migrate -- --name <nama>`  | Buat migrasi baru setelah mengubah `prisma/schema.prisma`                                                                                                  |
-| `npm run db:deploy`                    | Terapkan migrasi (staging/production)                                                                                                                      |
-| `npm run db:seed`                      | Isi master data & akun awal (aman diulang, tidak menimpa data)                                                                                             |
-| `npm run db:seed:sync`                 | Perbarui master data & tarif yang sudah ada agar sama dengan `prisma/seed-data.json` (tidak menghapus; menimpa perubahan dari aplikasi untuk ID yang sama) |
-| `npm test`                             | Unit test (Vitest)                                                                                                                                         |
-| `npm run lint`                         | Lint (oxlint)                                                                                                                                              |
-| `npm run smoke`                        | Uji alur lengkap (81 skenario) di **database test terpisah** `armada_test` + server test port 8001. Data user di `armada_dev` tidak disentuh               |
+| Script                                             | Fungsi                                                                                                                                                                      |
+| -------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `npm run start:dev`                                | Server development (auto-reload)                                                                                                                                            |
+| `npm run build` / `npm run start:prod`             | Build lalu jalankan versi production                                                                                                                                        |
+| `npm run db:up`                                    | Nyalakan PostgreSQL development (Docker)                                                                                                                                    |
+| `npm run db:migrate -- --name <nama>`              | Buat migrasi baru setelah mengubah `prisma/schema.prisma`                                                                                                                   |
+| `npm run db:deploy`                                | Terapkan migrasi (staging/production)                                                                                                                                       |
+| `npm run db:seed`                                  | Isi master data & akun awal (aman diulang: tidak menimpa, dan tidak membuat ulang data yang dihapus lewat aplikasi)                                                         |
+| `npm run db:seed:sync -- --confirm <db>`           | **Dikunci.** Samakan master data & tarif dengan `prisma/seed-data.json`. Ditolak di production; backup otomatis dulu; baris yang pernah diubah lewat aplikasi tidak ditimpa |
+| `npm run db:backup`                                | Backup database + berkas unggahan sekarang                                                                                                                                  |
+| `npm run db:backup:verify`                         | Uji restore backup terbaru ke database sementara, bandingkan jumlah baris                                                                                                   |
+| `npm run db:restore -- <file.dump> --confirm <db>` | Restore darurat (backup kondisi saat ini dibuat dulu)                                                                                                                       |
+| `npm test`                                         | Unit test (Vitest)                                                                                                                                                          |
+| `npm run lint`                                     | Lint (oxlint)                                                                                                                                                               |
+| `npm run smoke`                                    | Uji alur lengkap (81 skenario) di **database test terpisah** `armada_test` + server test port 8001. Data user di `armada_dev` tidak disentuh                                |
 
 ## Smoke test (database terpisah)
 
@@ -51,6 +54,27 @@ npm run start:dev             # http://localhost:8000/api/v1
 
 `armada_test` dibiarkan setelah selesai agar bisa diperiksa di pgAdmin, dan dibuat ulang pada run berikutnya.
 `scripts/smoke-test.mjs` menolak jalan tanpa `SMOKE_BASE_URL`, supaya tidak pernah mengarah ke server development secara tidak sengaja.
+
+## Backup & restore
+
+Data user (order, master data, tarif) hanya ada di database, jadi backup **wajib**.
+
+- `npm run db:backup` membuat `armada_<db>_<waktu>.dump` (pg_dump format custom) + manifest `.json`
+  (jumlah baris per tabel) di `BACKUP_DIR`, dan menyalin berkas unggahan baru ke cermin `BACKUP_DIR/uploads/`.
+  File dump dicek dengan `pg_restore --list`. Backup lebih tua dari `BACKUP_RETENTION_DAYS` (default 30) dihapus,
+  7 terbaru selalu disimpan.
+- **Jadwal otomatis (Windows):** Task Scheduler `Armada - Backup Database` menjalankan `scripts/backup-task.cmd`
+  setiap hari pukul **12:00 dan 17:30** (bila laptop mati, dijalankan saat menyala). Log: `backups/backup.log`.
+  Docker Desktop harus menyala. Hapus jadwal: `Unregister-ScheduledTask -TaskName "Armada - Backup Database"`.
+- **Simpan salinan di lokasi lain.** Backup di disk yang sama tidak menolong bila laptop/disk rusak:
+  isi `BACKUP_DIR` dengan folder di disk lain, NAS, atau folder OneDrive/Google Drive.
+- `npm run db:backup:verify` memulihkan backup terbaru ke database sementara `<db>_restore_check`,
+  membandingkan jumlah baris dengan manifest, lalu menghapusnya. Lakukan rutin (mis. sebulan sekali).
+- **Restore darurat:** hentikan backend, lalu `npm run db:restore -- backups\<file>.dump --confirm armada_dev`.
+  Kondisi saat ini dibackup dulu (label `pre-restore`), database dibuat ulang dari file, berkas unggahan
+  yang hilang dikembalikan dari cermin. Nyalakan backend lagi setelah selesai.
+- `pg_dump`/`pg_restore` dicari di `PG_BIN_DIR`, PATH, lalu `C:\Program Files\PostgreSQL\<versi>in`
+  (versi client harus >= versi server, yaitu 18).
 
 ## Akun & role
 

@@ -5,8 +5,13 @@
  * - Master data, tarif kontrak & tarif PNBP dari seed-data.json
  *   (disesuaikan dengan Excel "Monrep RKBM PPJK PBM 2026").
  *   Default: data yang sudah ada TIDAK ditimpa, supaya perubahan dari aplikasi tetap aman.
- *   `npm run db:seed:sync`: data dengan ID yang sama DIPERBARUI mengikuti seed-data.json
- *   (tidak ada yang dihapus). Pakai hanya bila seed-data.json memang sumber yang benar.
+ *   `npm run db:seed:sync -- --confirm <nama-database>`: data dengan ID yang sama DIPERBARUI
+ *   mengikuti seed-data.json (tidak ada yang dihapus). DIKUNCI:
+ *     - ditolak bila NODE_ENV=production (di server, master data dikelola lewat aplikasi),
+ *     - wajib --confirm dengan nama database tujuan,
+ *     - backup otomatis dibuat sebelum sync.
+ * - Di kedua mode, baris yang pernah diubah/dihapus lewat aplikasi (tercatat di audit_logs)
+ *   TIDAK PERNAH ditimpa atau dibuat ulang.
  * - Akun awal per role. Akun yang emailnya sudah ada TIDAK diubah (password tidak direset).
  *   Password diambil dari env SEED_PASSWORD_<ROLE> (mis. SEED_PASSWORD_SALES),
  *   atau dibuat acak lalu dicetak SEKALI di terminal.
@@ -14,6 +19,7 @@
 import 'dotenv/config';
 import { PrismaPg } from '@prisma/adapter-pg';
 import argon2 from 'argon2';
+import { spawnSync } from 'node:child_process';
 import { randomBytes } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -122,7 +128,69 @@ function assertUniqueIds(data: SeedData) {
   }
 }
 
+/**
+ * Baris yang pernah diubah, dibuat, atau dihapus lewat aplikasi (audit_logs).
+ * Kunci: "<entity>|<id>", mis. "master:customer|1", "contract_rate|RATE-CEP-001".
+ */
+async function loadAppEditedRows(): Promise<Set<string>> {
+  const rows = await prisma.auditLog.findMany({
+    where: {
+      OR: [
+        { action: { startsWith: 'master.' } },
+        { action: { startsWith: 'contract_rate.' } },
+        { action: { startsWith: 'pnbp_rate.' } },
+      ],
+    },
+    select: { entity: true, entityId: true },
+  });
+  return new Set(rows.map((r) => `${r.entity}|${r.entityId ?? ''}`));
+}
+
+/** Kunci mode --sync: melempar error bila sync tidak diizinkan. */
+function assertSyncAllowed(args: string[]): void {
+  const dbName = decodeURIComponent(
+    new URL(process.env.DATABASE_URL as string).pathname.slice(1),
+  );
+  if (process.env.NODE_ENV === 'production') {
+    throw new Error(
+      'db:seed:sync DIKUNCI di production: master data dikelola lewat aplikasi. ' +
+        'Gunakan "npm run db:seed" (hanya menambah data yang belum ada).',
+    );
+  }
+  const idx = args.indexOf('--confirm');
+  if (idx < 0 || args[idx + 1] !== dbName) {
+    throw new Error(
+      `db:seed:sync DIKUNCI. Sync menimpa master data & tarif di database "${dbName}" ` +
+        'dengan isi seed-data.json.\n' +
+        `Bila yakin: npm run db:seed:sync -- --confirm ${dbName}\n` +
+        'Baris yang pernah diubah lewat aplikasi tetap tidak akan ditimpa, dan backup dibuat otomatis.',
+    );
+  }
+}
+
+function backupBeforeSync(): void {
+  console.log('Membuat backup sebelum sync...');
+  const res = spawnSync(
+    process.execPath,
+    [
+      join(import.meta.dirname, '..', 'scripts', 'backup-db.mjs'),
+      '--label=pre-sync',
+    ],
+    { stdio: 'inherit' },
+  );
+  if (res.status !== 0) {
+    throw new Error('Backup gagal, sync dibatalkan (database tidak diubah).');
+  }
+}
+
 async function seedMaster(data: SeedData, sync: boolean) {
+  const appEdited = await loadAppEditedRows();
+  const skipped: string[] = [];
+  const isAppEdited = (key: string) => {
+    if (!appEdited.has(key)) return false;
+    skipped.push(key);
+    return true;
+  };
   const count = { created: 0, updated: 0 };
   const track = (existed: boolean) => {
     if (!existed) count.created++;
@@ -132,6 +200,7 @@ async function seedMaster(data: SeedData, sync: boolean) {
   for (const [resource, items] of Object.entries(data.masterData)) {
     for (const [position, item] of items.entries()) {
       const itemId = text(item.id, `${resource}-${position + 1}`);
+      if (isAppEdited(`master:${resource}|${itemId}`)) continue;
       const where = { resource_itemId: { resource, itemId } };
       const existed = Boolean(await prisma.masterItem.findUnique({ where }));
       if (existed && !sync) continue;
@@ -156,6 +225,7 @@ async function seedMaster(data: SeedData, sync: boolean) {
       rate.id,
       `RATE-${String(position + 1).padStart(3, '0')}`,
     );
+    if (isAppEdited(`contract_rate|${rateId}`)) continue;
     const existed = Boolean(
       await prisma.contractRate.findUnique({ where: { rateId } }),
     );
@@ -181,6 +251,7 @@ async function seedMaster(data: SeedData, sync: boolean) {
       rate.id,
       `PNBP-${String(position + 1).padStart(3, '0')}`,
     );
+    if (isAppEdited(`pnbp_rate|${rateId}`)) continue;
     const existed = Boolean(
       await prisma.pnbpPortRate.findUnique({ where: { rateId } }),
     );
@@ -202,6 +273,11 @@ async function seedMaster(data: SeedData, sync: boolean) {
     `Master data: ${count.created} baris baru` +
       (sync ? `, ${count.updated} baris diperbarui (mode --sync).` : '.'),
   );
+  if (skipped.length > 0) {
+    console.log(
+      `${skipped.length} baris dilewati karena pernah diubah/dihapus lewat aplikasi: ${skipped.join(', ')}`,
+    );
+  }
 }
 
 async function seedAccounts() {
@@ -244,7 +320,13 @@ async function main() {
     readFileSync(join(import.meta.dirname, 'seed-data.json'), 'utf8'),
   ) as SeedData;
   assertUniqueIds(data);
-  await seedMaster(data, process.argv.includes('--sync'));
+  const args = process.argv.slice(2);
+  const sync = args.includes('--sync');
+  if (sync) {
+    assertSyncAllowed(args);
+    backupBeforeSync();
+  }
+  await seedMaster(data, sync);
   await seedAccounts();
 }
 
