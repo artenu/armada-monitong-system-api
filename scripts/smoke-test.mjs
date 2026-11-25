@@ -1,7 +1,8 @@
 // Smoke test end-to-end terhadap server yang sedang berjalan (DEVELOPMENT SAJA: membuat order uji).
 // Pakai: node scripts/smoke-test.mjs <pw-admin> <pw-sales> <pw-ops> <pw-salesops> <pw-accounting>
 const BASE = process.env.SMOKE_BASE_URL ?? 'http://127.0.0.1:8000/api/v1';
-const [adminPw, salesPw, opsPw, salesOpsPw, accPw] = process.argv.slice(2);
+const [adminPw, salesPw, opsPw, salesOpsPw, accPw, direkturPw] =
+  process.argv.slice(2);
 let pass = 0;
 let fail = 0;
 const check = (name, cond, extra = '') => {
@@ -467,6 +468,48 @@ check(
 );
 const upNoAuth = await call('POST', '/files', { form });
 check('upload tanpa login -> 401', upNoAuth.status === 401);
+
+if (direkturPw) {
+  console.log('\n[Direktur - akses penuh]');
+  const dir = await login('direktur@armada.local', direkturPw);
+  check(
+    'login direktur',
+    dir.status === 200 && dir.json.data.user.role === 'direktur',
+  );
+  const pages = await Promise.all([
+    call('GET', '/users', { token: dir.token }),
+    call('GET', '/billing/orders', { token: dir.token }),
+    call('GET', '/operational/orders', { token: dir.token }),
+    call('GET', '/master', { token: dir.token }),
+  ]);
+  check(
+    'direktur bisa buka Users, Billing, Operasional, Master',
+    pages.every((p) => p.status === 200),
+    pages.map((p) => p.status).join(','),
+  );
+  const dirOrder = await call('POST', '/orders', {
+    token: dir.token,
+    body: { customer: 'PT ADP', service: 'LAYANAN PBM' },
+  });
+  check('direktur bisa membuat order', dirOrder.status === 201);
+  const dirMaster = await call('POST', '/master/agen', {
+    token: dir.token,
+    body: { id: 'tes-dir', nama: 'AGEN UJI DIREKTUR' },
+  });
+  check('direktur bisa ubah master data', dirMaster.status === 200);
+  await call('DELETE', '/master/agen/tes-dir', { token: dir.token });
+  const dirId = dir.json.data.user.id;
+  const ownName = await call('PUT', `/users/${dirId}`, {
+    token: dir.token,
+    body: { name: 'Direktur', role: 'direktur', status: 'Aktif' },
+  });
+  check('direktur bisa edit profil sendiri', ownName.status === 200);
+  const ownRole = await call('PUT', `/users/${dirId}`, {
+    token: dir.token,
+    body: { role: 'sales' },
+  });
+  check('direktur tidak bisa ubah role sendiri -> 409', ownRole.status === 409);
+}
 
 console.log('\n[Logout]');
 const out = await call('POST', '/auth/logout', { cookie: ops.cookie });

@@ -64,6 +64,12 @@ const SEED_ACCOUNTS: Array<{
     email: 'accounting@armada.local',
     department: 'Divisi Keuangan & Billing',
   },
+  {
+    role: 'direktur',
+    name: 'Direktur',
+    email: 'direktur@armada.local',
+    department: 'Direksi',
+  },
 ];
 
 const prisma = new PrismaClient({

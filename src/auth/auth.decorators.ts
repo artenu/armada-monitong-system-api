@@ -9,11 +9,20 @@ import type { AuthUser } from './auth-user.js';
 export const IS_PUBLIC_KEY = 'isPublic';
 export const ROLES_KEY = 'roles';
 
+/**
+ * Role dengan akses penuh: lolos semua pembatasan @Roles(), termasuk
+ * User Management & Master Data. Tambahkan role di sini bila perlu.
+ */
+export const FULL_ACCESS_ROLES: readonly UserRole[] = ['admin', 'direktur'];
+
+export const hasFullAccess = (role: UserRole) =>
+  FULL_ACCESS_ROLES.includes(role);
+
 /** Endpoint tanpa login (mis. /auth/login, /health) */
 export const Public = () => SetMetadata(IS_PUBLIC_KEY, true);
 
 /**
- * Batasi endpoint ke role tertentu. Admin selalu diizinkan.
+ * Batasi endpoint ke role tertentu. Role FULL_ACCESS_ROLES selalu diizinkan.
  * Tanpa @Roles, endpoint bisa diakses semua user yang sudah login.
  */
 export const Roles = (...roles: UserRole[]) => SetMetadata(ROLES_KEY, roles);

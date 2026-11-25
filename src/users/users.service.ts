@@ -32,6 +32,7 @@ const DEFAULT_DEPARTMENT: Record<User['role'], string> = {
   operasional: 'Divisi Operasional Lapangan',
   finance: 'Divisi Keuangan & Billing',
   sales_ops: 'Divisi Sales & Operasional Lapangan',
+  direktur: 'Direksi',
 };
 
 @Injectable()
@@ -100,9 +101,12 @@ export class UsersService {
     const role = dto.role ?? target.role;
     const status = dto.status ?? target.status;
 
-    if (target.id === actor.id && (role !== 'admin' || status !== 'Aktif')) {
+    if (
+      target.id === actor.id &&
+      (role !== target.role || status !== 'Aktif')
+    ) {
       throw new ConflictException(
-        'Anda tidak dapat menurunkan role atau menonaktifkan akun sendiri.',
+        'Anda tidak dapat mengubah role atau menonaktifkan akun sendiri.',
       );
     }
     if (dto.email && dto.email !== target.email) {

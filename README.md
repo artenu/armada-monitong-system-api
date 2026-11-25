@@ -48,10 +48,13 @@ npm run start:dev             # http://localhost:8000/api/v1
 | `operasional` | Update operasional, dokumen trigger finance, selesai muat/bongkar |
 | `sales_ops` | Gabungan akses Sales **dan** Operasional dalam satu akun |
 | `finance` (Accounting) | Invoice, konfirmasi diterima, konfirmasi lunas |
+| `direktur` | **Akses penuh** ke semua halaman, sama seperti admin |
+
+Role dengan akses penuh diatur di `FULL_ACCESS_ROLES` (`src/auth/auth.decorators.ts`).
 
 Semua role yang login boleh **membaca** daftar order (Dashboard) dan master data (dropdown form).
 
-Akun awal dibuat oleh `npm run db:seed`: `admin@`, `sales@`, `ops@`, `salesops@`, `accounting@armada.local`.
+Akun awal dibuat oleh `npm run db:seed`: `admin@`, `sales@`, `ops@`, `salesops@`, `accounting@`, `direktur@armada.local`.
 Password diambil dari `SEED_PASSWORD_<ROLE>` di `.env`, atau dibuat acak dan dicetak sekali. Ganti setelah login pertama.
 
 ## Alur status order
@@ -73,7 +76,8 @@ Bila alur di frontend berubah, ubah file itu saja.
 - Validasi body memakai **validasi fleksibel** (`src/common/validation.ts`): field inti dicek tipenya,
   field lain tidak dibuang. Endpoint dengan struktur tetap (login, user, complete, payment) memakai DTO biasa.
 - Jenis master baru cukup ditambahkan di `src/master/master.constants.ts`.
-- Role baru (mis. `direktur`): tambah di enum `UserRole` (`prisma/schema.prisma`) lalu `npm run db:migrate -- --name add-role-direktur`.
+- Role baru: tambah di enum `UserRole` (`prisma/schema.prisma`), lalu `npm run db:migrate -- --name add-role-<nama>`
+  dan pakai di `@Roles(...)` (atau `FULL_ACCESS_ROLES` untuk akses penuh).
 
 ## Autentikasi (Standar v2.3 bagian 10)
 

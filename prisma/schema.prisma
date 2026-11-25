@@ -23,6 +23,8 @@ enum UserRole {
   operasional
   finance
   sales_ops
+  /// Akses penuh ke semua halaman (sama seperti admin)
+  direktur
 }
 
 enum ActiveStatus {

@@ -6,10 +6,10 @@ import {
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import type { UserRole } from '../generated/prisma/client.js';
-import { IS_PUBLIC_KEY, ROLES_KEY } from './auth.decorators.js';
+import { hasFullAccess, IS_PUBLIC_KEY, ROLES_KEY } from './auth.decorators.js';
 import type { AuthUser } from './auth-user.js';
 
-/** RBAC: cocokkan role user dengan @Roles(). Admin selalu diizinkan. */
+/** RBAC: cocokkan role user dengan @Roles(). Admin & direktur selalu diizinkan. */
 @Injectable()
 export class RolesGuard implements CanActivate {
   constructor(private readonly reflector: Reflector) {}
@@ -27,7 +27,7 @@ export class RolesGuard implements CanActivate {
       return true;
     }
     const user = context.switchToHttp().getRequest<{ user?: AuthUser }>().user;
-    if (user && (user.role === 'admin' || roles.includes(user.role))) {
+    if (user && (hasFullAccess(user.role) || roles.includes(user.role))) {
       return true;
     }
     throw new ForbiddenException();
