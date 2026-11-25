@@ -27,28 +27,29 @@ npm run start:dev             # http://localhost:8000/api/v1
 
 ## Script
 
-| Script | Fungsi |
-| --- | --- |
-| `npm run start:dev` | Server development (auto-reload) |
-| `npm run build` / `npm run start:prod` | Build lalu jalankan versi production |
-| `npm run db:up` | Nyalakan PostgreSQL development (Docker) |
-| `npm run db:migrate -- --name <nama>` | Buat migrasi baru setelah mengubah `prisma/schema.prisma` |
-| `npm run db:deploy` | Terapkan migrasi (staging/production) |
-| `npm run db:seed` | Isi master data & akun awal (aman diulang, tidak menimpa data) |
-| `npm test` | Unit test (Vitest) |
-| `npm run lint` | Lint (oxlint) |
-| `npm run smoke -- <pw-admin> <pw-sales> <pw-ops> <pw-salesops> <pw-accounting> [pw-direktur]` | Uji alur lengkap ke server yang sedang jalan (**development saja**, membuat order uji) |
+| Script                                                                                        | Fungsi                                                                                                                                                     |
+| --------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `npm run start:dev`                                                                           | Server development (auto-reload)                                                                                                                           |
+| `npm run build` / `npm run start:prod`                                                        | Build lalu jalankan versi production                                                                                                                       |
+| `npm run db:up`                                                                               | Nyalakan PostgreSQL development (Docker)                                                                                                                   |
+| `npm run db:migrate -- --name <nama>`                                                         | Buat migrasi baru setelah mengubah `prisma/schema.prisma`                                                                                                  |
+| `npm run db:deploy`                                                                           | Terapkan migrasi (staging/production)                                                                                                                      |
+| `npm run db:seed`                                                                             | Isi master data & akun awal (aman diulang, tidak menimpa data)                                                                                             |
+| `npm run db:seed:sync`                                                                        | Perbarui master data & tarif yang sudah ada agar sama dengan `prisma/seed-data.json` (tidak menghapus; menimpa perubahan dari aplikasi untuk ID yang sama) |
+| `npm test`                                                                                    | Unit test (Vitest)                                                                                                                                         |
+| `npm run lint`                                                                                | Lint (oxlint)                                                                                                                                              |
+| `npm run smoke -- <pw-admin> <pw-sales> <pw-ops> <pw-salesops> <pw-accounting> [pw-direktur]` | Uji alur lengkap ke server yang sedang jalan (**development saja**, membuat order uji)                                                                     |
 
 ## Akun & role
 
-| Role | Akses |
-| --- | --- |
-| `admin` | Semua menu, termasuk User Management & Master Data |
-| `sales` | Buat/ubah/hapus draft order, kirim ke Operasional |
-| `operasional` | Update operasional, dokumen trigger finance, selesai muat/bongkar |
-| `sales_ops` | Gabungan akses Sales **dan** Operasional dalam satu akun |
-| `finance` (Accounting) | Invoice, konfirmasi diterima, konfirmasi lunas |
-| `direktur` | **Akses penuh** ke semua halaman, sama seperti admin |
+| Role                   | Akses                                                             |
+| ---------------------- | ----------------------------------------------------------------- |
+| `admin`                | Semua menu, termasuk User Management & Master Data                |
+| `sales`                | Buat/ubah/hapus draft order, kirim ke Operasional                 |
+| `operasional`          | Update operasional, dokumen trigger finance, selesai muat/bongkar |
+| `sales_ops`            | Gabungan akses Sales **dan** Operasional dalam satu akun          |
+| `finance` (Accounting) | Invoice, konfirmasi diterima, konfirmasi lunas                    |
+| `direktur`             | **Akses penuh** ke semua halaman, sama seperti admin              |
 
 Role dengan akses penuh diatur di `FULL_ACCESS_ROLES` (`src/auth/auth.decorators.ts`).
 
@@ -70,7 +71,7 @@ Bila alur di frontend berubah, ubah file itu saja.
 
 ## Desain yang fleksibel terhadap perubahan frontend
 
-- **Order, master data, tarif kontrak, tarif PNBP** disimpan dengan pola *kolom inti + JSON*:
+- **Order, master data, tarif kontrak, tarif PNBP** disimpan dengan pola _kolom inti + JSON_:
   field yang dipakai filter/aturan menjadi kolom (status, customer, layanan, tanggal), sisanya di kolom `data` (JSONB).
   Field baru dari form frontend **otomatis tersimpan** tanpa migrasi database.
 - Validasi body memakai **validasi fleksibel** (`src/common/validation.ts`): field inti dicek tipenya,
@@ -94,15 +95,15 @@ Bila alur di frontend berubah, ubah file itu saja.
 
 ### Hak akses per endpoint
 
-| Endpoint | Siapa |
-| --- | --- |
-| `POST /auth/login`, `/auth/refresh`, `/auth/logout`, `GET /health` | Publik |
-| `GET /auth/me`, `POST /auth/logout-all`, `POST /files`, `GET /orders`, `GET /orders/:id`, `GET /master/**` | Semua user login |
-| `POST/PUT/DELETE /orders`, `POST /orders/:id/send-to-ops` | sales, sales_ops |
-| `/operational/orders/**` | operasional, sales_ops |
-| `/billing/orders/**` | finance |
-| `POST/DELETE /master/**`, `/users/**` | admin |
-| Semua endpoint di atas | admin, direktur (`FULL_ACCESS_ROLES`) |
+| Endpoint                                                                                                   | Siapa                                 |
+| ---------------------------------------------------------------------------------------------------------- | ------------------------------------- |
+| `POST /auth/login`, `/auth/refresh`, `/auth/logout`, `GET /health`                                         | Publik                                |
+| `GET /auth/me`, `POST /auth/logout-all`, `POST /files`, `GET /orders`, `GET /orders/:id`, `GET /master/**` | Semua user login                      |
+| `POST/PUT/DELETE /orders`, `POST /orders/:id/send-to-ops`                                                  | sales, sales_ops                      |
+| `/operational/orders/**`                                                                                   | operasional, sales_ops                |
+| `/billing/orders/**`                                                                                       | finance                               |
+| `POST/DELETE /master/**`, `/users/**`                                                                      | admin                                 |
+| Semua endpoint di atas                                                                                     | admin, direktur (`FULL_ACCESS_ROLES`) |
 
 ## Format respons
 
@@ -121,13 +122,13 @@ dengan nama acak (UUID). Folder `uploads/` **wajib ikut backup**.
 
 ## Penyimpangan dari standar yang disengaja
 
-| Hal | Alasan |
-| --- | --- |
-| Kolom `data` JSONB untuk order & master | Form frontend masih sering berubah mengikuti MOM; menghindari migrasi mingguan |
-| Nominal uang di dalam JSON masih `number` dari frontend | Mengikuti tipe frontend; kandidat dipindah ke kolom `Decimal` saat laporan keuangan dibuat |
-| `/uploads` statis tanpa cek login | Sesuai kontrak (dibuka langsung oleh `<iframe>`/link); nama file UUID tidak bisa ditebak. Ganti ke endpoint berizin bila dibutuhkan |
-| Test runner Vitest & linter oxlint | Bawaan NestJS 12 (standar v2.3 masih menyebut Jest/ESLint) |
-| `DATABASE_URL` memakai `127.0.0.1` | Prisma di Windows gagal lewat `localhost` (IPv6) ke port Docker |
+| Hal                                                     | Alasan                                                                                                                              |
+| ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| Kolom `data` JSONB untuk order & master                 | Form frontend masih sering berubah mengikuti MOM; menghindari migrasi mingguan                                                      |
+| Nominal uang di dalam JSON masih `number` dari frontend | Mengikuti tipe frontend; kandidat dipindah ke kolom `Decimal` saat laporan keuangan dibuat                                          |
+| `/uploads` statis tanpa cek login                       | Sesuai kontrak (dibuka langsung oleh `<iframe>`/link); nama file UUID tidak bisa ditebak. Ganti ke endpoint berizin bila dibutuhkan |
+| Test runner Vitest & linter oxlint                      | Bawaan NestJS 12 (standar v2.3 masih menyebut Jest/ESLint)                                                                          |
+| `DATABASE_URL` memakai `127.0.0.1`                      | Prisma di Windows gagal lewat `localhost` (IPv6) ke port Docker                                                                     |
 
 ## Catatan dependency
 

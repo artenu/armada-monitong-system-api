@@ -17,6 +17,7 @@
     "db:migrate": "prisma migrate dev",
     "db:deploy": "prisma migrate deploy",
     "db:seed": "prisma db seed",
+    "db:seed:sync": "prisma db seed -- --sync",
     "db:studio": "prisma studio",
     "smoke": "node scripts/smoke-test.mjs",
     "format": "prettier --write \"src/**/*.ts\" \"prisma/**/*.ts\" prisma.config.ts \"scripts/**/*.mjs\"",

@@ -2,8 +2,11 @@
  * Seed data awal (aman dijalankan berulang / idempoten).
  *   npx prisma db seed
  *
- * - Master data, tarif kontrak & tarif PNBP dari seed-data.json (diekspor dari frontend).
- *   Data yang sudah ada TIDAK ditimpa, supaya perubahan dari aplikasi tetap aman.
+ * - Master data, tarif kontrak & tarif PNBP dari seed-data.json
+ *   (disesuaikan dengan Excel "Monrep RKBM PPJK PBM 2026").
+ *   Default: data yang sudah ada TIDAK ditimpa, supaya perubahan dari aplikasi tetap aman.
+ *   `npm run db:seed:sync`: data dengan ID yang sama DIPERBARUI mengikuti seed-data.json
+ *   (tidak ada yang dihapus). Pakai hanya bila seed-data.json memang sumber yang benar.
  * - Akun awal per role. Akun yang emailnya sudah ada TIDAK diubah (password tidak direset).
  *   Password diambil dari env SEED_PASSWORD_<ROLE> (mis. SEED_PASSWORD_SALES),
  *   atau dibuat acak lalu dicetak SEKALI di terminal.
@@ -86,29 +89,32 @@ const text = (value: unknown, fallback = '') =>
 const generatePassword = () =>
   randomBytes(12).toString('base64url').replace(/[-_]/g, 'x').slice(0, 14);
 
-async function seedMaster(data: SeedData) {
-  let created = 0;
+async function seedMaster(data: SeedData, sync: boolean) {
+  const count = { created: 0, updated: 0 };
+  const track = (existed: boolean) => {
+    if (!existed) count.created++;
+    else if (sync) count.updated++;
+  };
+
   for (const [resource, items] of Object.entries(data.masterData)) {
     for (const [position, item] of items.entries()) {
       const itemId = text(item.id, `${resource}-${position + 1}`);
-      const exists = await prisma.masterItem.findUnique({
-        where: { resource_itemId: { resource, itemId } },
+      const where = { resource_itemId: { resource, itemId } };
+      const existed = Boolean(await prisma.masterItem.findUnique({ where }));
+      if (existed && !sync) continue;
+      const fields = {
+        kode: text(item.kode, itemId),
+        nama: text(item.nama, itemId),
+        status: status(item.status),
+        position,
+        data: item as Prisma.InputJsonValue,
+      };
+      await prisma.masterItem.upsert({
+        where,
+        create: { resource, itemId, ...fields },
+        update: fields,
       });
-      if (exists) {
-        continue;
-      }
-      await prisma.masterItem.create({
-        data: {
-          resource,
-          itemId,
-          kode: text(item.kode, itemId),
-          nama: text(item.nama, itemId),
-          status: status(item.status),
-          position,
-          data: item as Prisma.InputJsonValue,
-        },
-      });
-      created++;
+      track(existed);
     }
   }
 
@@ -117,21 +123,24 @@ async function seedMaster(data: SeedData) {
       rate.id,
       `RATE-${String(position + 1).padStart(3, '0')}`,
     );
-    if (await prisma.contractRate.findUnique({ where: { rateId } })) {
-      continue;
-    }
-    await prisma.contractRate.create({
-      data: {
-        rateId,
-        customerName: text(rate.customerName, '-'),
-        service: text(rate.service) || null,
-        location: text(rate.location) || null,
-        status: status(rate.status),
-        position,
-        data: { ...rate, id: rateId } as Prisma.InputJsonValue,
-      },
+    const existed = Boolean(
+      await prisma.contractRate.findUnique({ where: { rateId } }),
+    );
+    if (existed && !sync) continue;
+    const fields = {
+      customerName: text(rate.customerName, '-'),
+      service: text(rate.service) || null,
+      location: text(rate.location) || null,
+      status: status(rate.status),
+      position,
+      data: { ...rate, id: rateId } as Prisma.InputJsonValue,
+    };
+    await prisma.contractRate.upsert({
+      where: { rateId },
+      create: { rateId, ...fields },
+      update: fields,
     });
-    created++;
+    track(existed);
   }
 
   for (const [position, rate] of data.pnbpPortRates.entries()) {
@@ -139,21 +148,27 @@ async function seedMaster(data: SeedData) {
       rate.id,
       `PNBP-${String(position + 1).padStart(3, '0')}`,
     );
-    if (await prisma.pnbpPortRate.findUnique({ where: { rateId } })) {
-      continue;
-    }
-    await prisma.pnbpPortRate.create({
-      data: {
-        rateId,
-        portName: text(rate.portName, '-'),
-        status: status(rate.status),
-        position,
-        data: { ...rate, id: rateId } as Prisma.InputJsonValue,
-      },
+    const existed = Boolean(
+      await prisma.pnbpPortRate.findUnique({ where: { rateId } }),
+    );
+    if (existed && !sync) continue;
+    const fields = {
+      portName: text(rate.portName, '-'),
+      status: status(rate.status),
+      position,
+      data: { ...rate, id: rateId } as Prisma.InputJsonValue,
+    };
+    await prisma.pnbpPortRate.upsert({
+      where: { rateId },
+      create: { rateId, ...fields },
+      update: fields,
     });
-    created++;
+    track(existed);
   }
-  console.log(`Master data: ${created} baris baru ditambahkan.`);
+  console.log(
+    `Master data: ${count.created} baris baru` +
+      (sync ? `, ${count.updated} baris diperbarui (mode --sync).` : '.'),
+  );
 }
 
 async function seedAccounts() {
@@ -195,7 +210,7 @@ async function main() {
   const data = JSON.parse(
     readFileSync(join(import.meta.dirname, 'seed-data.json'), 'utf8'),
   ) as SeedData;
-  await seedMaster(data);
+  await seedMaster(data, process.argv.includes('--sync'));
   await seedAccounts();
 }
 

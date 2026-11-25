@@ -448,6 +448,293 @@
         "nama": "TB. PUTRA RUPAT II",
         "subDetail": "Putra Rupat - 2.200 HP",
         "status": "Aktif"
+      },
+      {
+        "id": "TB-51",
+        "kode": "TB-51",
+        "nama": "TB. ALIM 28",
+        "status": "Aktif",
+        "subDetail": "GT 219"
+      },
+      {
+        "id": "TB-52",
+        "kode": "TB-52",
+        "nama": "TB. AVRILL",
+        "status": "Aktif",
+        "subDetail": "GT 147"
+      },
+      {
+        "id": "TB-53",
+        "kode": "TB-53",
+        "nama": "TB. BIAK 26",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-54",
+        "kode": "TB-54",
+        "nama": "TB. DELTA ABADI 38",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-55",
+        "kode": "TB-55",
+        "nama": "TB. DELTA AYU 138",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-56",
+        "kode": "TB-56",
+        "nama": "TB. DELTA AYU 218",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-57",
+        "kode": "TB-57",
+        "nama": "TB. DELTA AYU 5",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-58",
+        "kode": "TB-58",
+        "nama": "TB. DELTA AYU 618",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-59",
+        "kode": "TB-59",
+        "nama": "TB. DELTA AYU 628",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-60",
+        "kode": "TB-60",
+        "nama": "TB. DELTA AYU 638",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-61",
+        "kode": "TB-61",
+        "nama": "TB. DELTA AYU 658",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-62",
+        "kode": "TB-62",
+        "nama": "TB. DELTA AYU CHRISTIAN",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-63",
+        "kode": "TB-63",
+        "nama": "TB. DELTA CAHAYA 5",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-64",
+        "kode": "TB-64",
+        "nama": "TB. GONAYA XVIII",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-65",
+        "kode": "TB-65",
+        "nama": "TB. GRACE 01",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-66",
+        "kode": "TB-66",
+        "nama": "TB. HARMONY 35",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-67",
+        "kode": "TB-67",
+        "nama": "TB. HARMONY 39",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-68",
+        "kode": "TB-68",
+        "nama": "TB. HARMONY 53",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-69",
+        "kode": "TB-69",
+        "nama": "TB. HARMONY 57",
+        "status": "Aktif",
+        "subDetail": "GT 260"
+      },
+      {
+        "id": "TB-70",
+        "kode": "TB-70",
+        "nama": "TB. HARMONY V",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-71",
+        "kode": "TB-71",
+        "nama": "TB. HARMONY XX",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-72",
+        "kode": "TB-72",
+        "nama": "TB. HARMONY XXI",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-73",
+        "kode": "TB-73",
+        "nama": "TB. LINTAS SAMUDERA 116",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-74",
+        "kode": "TB-74",
+        "nama": "TB. LINTAS SAMUDERA 118",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-75",
+        "kode": "TB-75",
+        "nama": "TB. LINTAS SAMUDERA 127",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-76",
+        "kode": "TB-76",
+        "nama": "TB. LINTAS SAMUDERA 152",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-77",
+        "kode": "TB-77",
+        "nama": "TB. LINTAS SAMUDERA 53",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-78",
+        "kode": "TB-78",
+        "nama": "TB. LINTAS SAMUDERA 58",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-79",
+        "kode": "TB-79",
+        "nama": "TB. LINTAS SAMUDERA 90",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-80",
+        "kode": "TB-80",
+        "nama": "TB. LINTAS SAMUDERA II",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-81",
+        "kode": "TB-81",
+        "nama": "TB. LINTAS SAMUDERA IX",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-82",
+        "kode": "TB-82",
+        "nama": "TB. LINTAS SAMUDERA VII",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-83",
+        "kode": "TB-83",
+        "nama": "TB. LINTAS SAMUDERA XI",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-84",
+        "kode": "TB-84",
+        "nama": "TB. LINTAS SAMUDERA XVIII",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-85",
+        "kode": "TB-85",
+        "nama": "TB. LINTAS SAMUDERA XXVI",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-86",
+        "kode": "TB-86",
+        "nama": "TB. LINTAS SAMUDERA XXX",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-87",
+        "kode": "TB-87",
+        "nama": "TB. MP 2805",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-88",
+        "kode": "TB-88",
+        "nama": "TB. PACIFIC JAYA XX",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-89",
+        "kode": "TB-89",
+        "nama": "TB. PERMATA KALTIM II",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-90",
+        "kode": "TB-90",
+        "nama": "TB. PUTRA RUPAT 21",
+        "status": "Aktif",
+        "subDetail": "GT 192"
+      },
+      {
+        "id": "TB-91",
+        "kode": "TB-91",
+        "nama": "TB. PUTRA RUPAT III",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-92",
+        "kode": "TB-92",
+        "nama": "TB. PUTRA RUPAT VI",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-93",
+        "kode": "TB-93",
+        "nama": "TB. SEA WORLD 5",
+        "status": "Aktif",
+        "subDetail": "GT 205"
+      },
+      {
+        "id": "TB-94",
+        "kode": "TB-94",
+        "nama": "TB. SUPER STAR 12",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-95",
+        "kode": "TB-95",
+        "nama": "TB. SYUKUR 36",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-96",
+        "kode": "TB-96",
+        "nama": "TB. VANDO III",
+        "status": "Aktif"
+      },
+      {
+        "id": "TB-97",
+        "kode": "TB-97",
+        "nama": "TB. WIRATIMUR 1001",
+        "status": "Aktif"
       }
     ],
     "barge": [
@@ -702,6 +989,379 @@
         "nama": "BG. TANJUNG MEDANG I",
         "subDetail": "300 Feet - 8.000 MT",
         "status": "Aktif"
+      },
+      {
+        "id": "BG-37",
+        "kode": "BG-37",
+        "nama": "BG. ALIM B-40",
+        "status": "Aktif",
+        "subDetail": "GT 3213"
+      },
+      {
+        "id": "BG-38",
+        "kode": "BG-38",
+        "nama": "BG. ALIM B-43",
+        "status": "Aktif",
+        "subDetail": "GT 3163"
+      },
+      {
+        "id": "BG-39",
+        "kode": "BG-39",
+        "nama": "BG. AT ASMAT 727",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-40",
+        "kode": "BG-40",
+        "nama": "BG. BROTHERHOOD II",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-41",
+        "kode": "BG-41",
+        "nama": "BG. BROTHERHOOD III",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-42",
+        "kode": "BG-42",
+        "nama": "BG. COMET 08",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-43",
+        "kode": "BG-43",
+        "nama": "BG. KALIMANTAN ABADI 05",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-44",
+        "kode": "BG-44",
+        "nama": "BG. KALIMANTAN ABADI 06",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-45",
+        "kode": "BG-45",
+        "nama": "BG. KALIMANTAN ABADI 11",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-46",
+        "kode": "BG-46",
+        "nama": "BG. KALIMANTAN CAHAYA 18",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-47",
+        "kode": "BG-47",
+        "nama": "BG. KALIMANTAN CAHAYA 38",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-48",
+        "kode": "BG-48",
+        "nama": "BG. KALIMANTAN CAHAYA 68",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-49",
+        "kode": "BG-49",
+        "nama": "BG. KALIMANTAN DELAPAN",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-50",
+        "kode": "BG-50",
+        "nama": "BG. KALIMANTAN DUA",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-51",
+        "kode": "BG-51",
+        "nama": "BG. KALIMANTAN PERSADA 01",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-52",
+        "kode": "BG-52",
+        "nama": "BG. KALIMANTAN PERSADA 02",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-53",
+        "kode": "BG-53",
+        "nama": "BG. KALIMANTAN PERSADA 03",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-54",
+        "kode": "BG-54",
+        "nama": "BG. LINTAS SAMUDERA 128",
+        "status": "Aktif",
+        "subDetail": "GT 3352"
+      },
+      {
+        "id": "BG-55",
+        "kode": "BG-55",
+        "nama": "BG. LINTAS SAMUDERA 129",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-56",
+        "kode": "BG-56",
+        "nama": "BG. LINTAS SAMUDERA 130",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-57",
+        "kode": "BG-57",
+        "nama": "BG. LINTAS SAMUDERA 131",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-58",
+        "kode": "BG-58",
+        "nama": "BG. LINTAS SAMUDERA 132",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-59",
+        "kode": "BG-59",
+        "nama": "BG. LINTAS SAMUDERA 51",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-60",
+        "kode": "BG-60",
+        "nama": "BG. LINTAS SAMUDERA 68",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-61",
+        "kode": "BG-61",
+        "nama": "BG. LINTAS SAMUDERA 70",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-62",
+        "kode": "BG-62",
+        "nama": "BG. LINTAS SAMUDERA 71",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-63",
+        "kode": "BG-63",
+        "nama": "BG. LINTAS SAMUDERA 75",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-64",
+        "kode": "BG-64",
+        "nama": "BG. LINTAS SAMUDERA 77",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-65",
+        "kode": "BG-65",
+        "nama": "BG. LINTAS SAMUDERA 82",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-66",
+        "kode": "BG-66",
+        "nama": "BG. LINTAS SAMUDERA 87",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-67",
+        "kode": "BG-67",
+        "nama": "BG. LINTAS SAMUDERA 93",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-68",
+        "kode": "BG-68",
+        "nama": "BG. LINTAS SAMUDERA 97",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-69",
+        "kode": "BG-69",
+        "nama": "BG. LINTAS SAMUDERA III",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-70",
+        "kode": "BG-70",
+        "nama": "BG. LINTAS SAMUDERA V",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-71",
+        "kode": "BG-71",
+        "nama": "BG. LINTAS SAMUDERA VI",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-72",
+        "kode": "BG-72",
+        "nama": "BG. LINTAS SAMUDERA VII",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-73",
+        "kode": "BG-73",
+        "nama": "BG. LINTAS SAMUDERA VIII",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-74",
+        "kode": "BG-74",
+        "nama": "BG. LINTAS SAMUDERA XIX",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-75",
+        "kode": "BG-75",
+        "nama": "BG. LINTAS SAMUDERA XV",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-76",
+        "kode": "BG-76",
+        "nama": "BG. LINTAS SAMUDERA XVIII",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-77",
+        "kode": "BG-77",
+        "nama": "BG. LINTAS SAMUDERA XX",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-78",
+        "kode": "BG-78",
+        "nama": "BG. MAJESTIC 3007",
+        "status": "Aktif",
+        "subDetail": "GT 3145"
+      },
+      {
+        "id": "BG-79",
+        "kode": "BG-79",
+        "nama": "BG. MARINE POWER 3016",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-80",
+        "kode": "BG-80",
+        "nama": "BG. MARITIM PERKASA 3052",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-81",
+        "kode": "BG-81",
+        "nama": "BG. MARITIM PERKASA 3057",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-82",
+        "kode": "BG-82",
+        "nama": "BG. PARTA JAYA 3005",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-83",
+        "kode": "BG-83",
+        "nama": "BG. PERMATA KALTIM III",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-84",
+        "kode": "BG-84",
+        "nama": "BG. PRASETYA 9",
+        "status": "Aktif",
+        "subDetail": "GT 3086"
+      },
+      {
+        "id": "BG-85",
+        "kode": "BG-85",
+        "nama": "BG. SEA DRAGON 3068",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-86",
+        "kode": "BG-86",
+        "nama": "BG. SPA 30001",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-87",
+        "kode": "BG-87",
+        "nama": "BG. SUMBER SAMUDERA 12",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-88",
+        "kode": "BG-88",
+        "nama": "BG. SYUKUR 79",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-89",
+        "kode": "BG-89",
+        "nama": "BG. TANJUNG MEDANG II",
+        "status": "Aktif",
+        "subDetail": "GT 3012"
+      },
+      {
+        "id": "BG-90",
+        "kode": "BG-90",
+        "nama": "BG. TANJUNG MEDANG III",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-91",
+        "kode": "BG-91",
+        "nama": "BG. TANJUNG MEDANG VI",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-92",
+        "kode": "BG-92",
+        "nama": "BG. TELAGA MAKMUR 21",
+        "status": "Aktif",
+        "subDetail": "GT 3220"
+      },
+      {
+        "id": "BG-93",
+        "kode": "BG-93",
+        "nama": "BG. WIRATIMUR 3002",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-94",
+        "kode": "BG-94",
+        "nama": "BG. WIRATIMUR 3006",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-95",
+        "kode": "BG-95",
+        "nama": "BG. WIRATIMUR 3008",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-96",
+        "kode": "BG-96",
+        "nama": "BG. WIRATIMUR 3009",
+        "status": "Aktif"
+      },
+      {
+        "id": "BG-97",
+        "kode": "BG-97",
+        "nama": "BG. WIRATIMUR 3010",
+        "status": "Aktif"
       }
     ],
     "lokasi": [
@@ -804,6 +1464,20 @@
         "nama": "Pelsus PT Semen Tonasa",
         "subDetail": "Biringkassi, Sulsel",
         "status": "Aktif"
+      },
+      {
+        "id": "8",
+        "kode": "LOC-008",
+        "nama": "Muara Sangkulirang Anchorage",
+        "subDetail": "Anchorage Sangkulirang",
+        "status": "Aktif"
+      },
+      {
+        "id": "9",
+        "kode": "LOC-009",
+        "nama": "Lainnya",
+        "subDetail": "Drop point lainnya",
+        "status": "Aktif"
       }
     ],
     "pol": [
@@ -887,6 +1561,27 @@
         "status": "Aktif"
       },
       {
+        "id": "8",
+        "kode": "POD-008",
+        "nama": "Pelabuhan Muara Sampara",
+        "subDetail": "Sulawesi Tenggara",
+        "status": "Aktif"
+      },
+      {
+        "id": "9",
+        "kode": "POD-009",
+        "nama": "Pelsus PT Solusi Bangun Indonesia",
+        "subDetail": "Pelabuhan Khusus SBI",
+        "status": "Aktif"
+      },
+      {
+        "id": "10",
+        "kode": "POD-010",
+        "nama": "Tersus PT Semen Indonesia",
+        "subDetail": "Terminal Khusus Semen Indonesia",
+        "status": "Aktif"
+      },
+      {
         "id": "13",
         "kode": "POD-013",
         "nama": "Lainnya",
@@ -963,142 +1658,338 @@
       {
         "id": "6",
         "kode": "MV-006",
-        "nama": "MV ABDUL HAMID",
+        "nama": "MV. ABDUL HAMID",
         "subDetail": "Bulk Carrier",
         "status": "Aktif"
       },
       {
         "id": "7",
         "kode": "MV-007",
-        "nama": "MV AFRIANE AYU",
+        "nama": "MV. AFRIANIE AYU",
         "subDetail": "Bulk Carrier",
         "status": "Aktif"
       },
       {
         "id": "8",
         "kode": "MV-008",
-        "nama": "MV ALESSANDRA M",
+        "nama": "MV. ALESSANDRA M",
         "subDetail": "Bulk Carrier",
         "status": "Aktif"
       },
       {
         "id": "9",
         "kode": "MV-009",
-        "nama": "MV AMAN SUKSES",
+        "nama": "MV. AMAN SUKSES",
         "subDetail": "Bulk Carrier",
         "status": "Aktif"
       },
       {
         "id": "10",
         "kode": "MV-010",
-        "nama": "MV ASIAN WISDOM",
+        "nama": "MV. ASIAN WISDOM",
         "subDetail": "Bulk Carrier",
         "status": "Aktif"
       },
       {
         "id": "11",
         "kode": "MV-011",
-        "nama": "MV BERGE KAIZAN",
+        "nama": "MV. BERGE KAIZAN",
         "subDetail": "Bulk Carrier - Capesize",
         "status": "Aktif"
       },
       {
         "id": "12",
         "kode": "MV-012",
-        "nama": "MV BULK NUSANTARA",
+        "nama": "MV. BULK NUSANTARA",
         "subDetail": "Bulk Carrier",
         "status": "Aktif"
       },
       {
         "id": "13",
         "kode": "MV-013",
-        "nama": "MV EMERALD INDAH",
+        "nama": "MV. EMERALD INDAH",
         "subDetail": "Bulk Carrier",
         "status": "Aktif"
       },
       {
         "id": "14",
         "kode": "MV-014",
-        "nama": "MV GLOBAL WINNER",
+        "nama": "MV. GLOBAL WINNER",
         "subDetail": "Bulk Carrier",
         "status": "Aktif"
       },
       {
         "id": "15",
         "kode": "MV-015",
-        "nama": "MV HABCO AQUILA",
+        "nama": "MV. HABCO AQUILA",
         "subDetail": "Bulk Carrier",
         "status": "Aktif"
       },
       {
         "id": "16",
         "kode": "MV-016",
-        "nama": "MV HENG XING FA ZHAN",
+        "nama": "MV. HENG XING FA ZHAN",
         "subDetail": "Bulk Carrier",
         "status": "Aktif"
       },
       {
         "id": "17",
         "kode": "MV-017",
-        "nama": "MV IMS JAKARTA",
+        "nama": "MV. IMS JAKARTA",
         "subDetail": "Bulk Carrier",
         "status": "Aktif"
       },
       {
         "id": "18",
         "kode": "MV-018",
-        "nama": "MV KAREEM",
+        "nama": "MV. KAREEM",
         "subDetail": "Bulk Carrier",
         "status": "Aktif"
       },
       {
         "id": "19",
         "kode": "MV-019",
-        "nama": "MV LUMOSO ALAM",
+        "nama": "MV. LUMOSO ALAM",
         "subDetail": "Bulk Carrier",
         "status": "Aktif"
       },
       {
         "id": "20",
         "kode": "MV-020",
-        "nama": "MV LUMOSO DAMAI",
+        "nama": "MV. LUMOSO DAMAI",
         "subDetail": "Bulk Carrier",
         "status": "Aktif"
       },
       {
         "id": "21",
         "kode": "MV-021",
-        "nama": "MV LUMOSO HAWAR",
+        "nama": "MV. LUMOSO HAWAR",
         "subDetail": "Bulk Carrier",
         "status": "Aktif"
       },
       {
         "id": "22",
         "kode": "MV-022",
-        "nama": "MV LUMOSO LANCAR",
+        "nama": "MV. LUMOSO LANCAR",
         "subDetail": "Bulk Carrier",
         "status": "Aktif"
       },
       {
         "id": "23",
         "kode": "MV-023",
-        "nama": "MV LUMOSO PROSPER",
+        "nama": "MV. LUMOSO PROSPER",
         "subDetail": "Bulk Carrier",
         "status": "Aktif"
       },
       {
         "id": "24",
         "kode": "MV-024",
-        "nama": "MV MANALAGI ASTI",
+        "nama": "MV. MANALAGI ASTI",
         "subDetail": "Bulk Carrier",
         "status": "Aktif"
       },
       {
         "id": "25",
         "kode": "MV-025",
-        "nama": "MV MERIT TRADER",
+        "nama": "MV. MERIT TRADER",
         "subDetail": "Bulk Carrier",
         "status": "Aktif"
+      },
+      {
+        "id": "26",
+        "kode": "MV-026",
+        "nama": "LCT GALAXY 8",
+        "status": "Aktif",
+        "subDetail": "Landing Craft Tank"
+      },
+      {
+        "id": "27",
+        "kode": "MV-027",
+        "nama": "MV. EVER SUCCESS",
+        "status": "Aktif",
+        "subDetail": "Bulk Carrier"
+      },
+      {
+        "id": "28",
+        "kode": "MV-028",
+        "nama": "MV. GOLDEN HOPE",
+        "status": "Aktif",
+        "subDetail": "Bulk Carrier"
+      },
+      {
+        "id": "29",
+        "kode": "MV-029",
+        "nama": "MV. GRAND HERMES",
+        "status": "Aktif",
+        "subDetail": "Bulk Carrier"
+      },
+      {
+        "id": "30",
+        "kode": "MV-030",
+        "nama": "MV. GUNALEILA",
+        "status": "Aktif",
+        "subDetail": "Bulk Carrier"
+      },
+      {
+        "id": "31",
+        "kode": "MV-031",
+        "nama": "MV. IMS BALI",
+        "status": "Aktif",
+        "subDetail": "Bulk Carrier"
+      },
+      {
+        "id": "32",
+        "kode": "MV-032",
+        "nama": "MV. JIA DA",
+        "status": "Aktif",
+        "subDetail": "Bulk Carrier"
+      },
+      {
+        "id": "33",
+        "kode": "MV-033",
+        "nama": "MV. JIE JI",
+        "status": "Aktif",
+        "subDetail": "Bulk Carrier"
+      },
+      {
+        "id": "34",
+        "kode": "MV-034",
+        "nama": "MV. JIN CHUAN MEN",
+        "status": "Aktif",
+        "subDetail": "Bulk Carrier"
+      },
+      {
+        "id": "35",
+        "kode": "MV-035",
+        "nama": "MV. JOSCO YONGZHOU",
+        "status": "Aktif",
+        "subDetail": "Bulk Carrier"
+      },
+      {
+        "id": "36",
+        "kode": "MV-036",
+        "nama": "MV. LAKER",
+        "status": "Aktif",
+        "subDetail": "Bulk Carrier"
+      },
+      {
+        "id": "37",
+        "kode": "MV-037",
+        "nama": "MV. LUCKY CAMELIA",
+        "status": "Aktif",
+        "subDetail": "Bulk Carrier"
+      },
+      {
+        "id": "38",
+        "kode": "MV-038",
+        "nama": "MV. LUMOSO AMAN",
+        "status": "Aktif",
+        "subDetail": "Bulk Carrier"
+      },
+      {
+        "id": "39",
+        "kode": "MV-039",
+        "nama": "MV. MINGTAI 8",
+        "status": "Aktif",
+        "subDetail": "Bulk Carrier"
+      },
+      {
+        "id": "40",
+        "kode": "MV-040",
+        "nama": "MV. MUBASYIR",
+        "status": "Aktif",
+        "subDetail": "Bulk Carrier"
+      },
+      {
+        "id": "41",
+        "kode": "MV-041",
+        "nama": "MV. NAMI ONE",
+        "status": "Aktif",
+        "subDetail": "Bulk Carrier"
+      },
+      {
+        "id": "42",
+        "kode": "MV-042",
+        "nama": "MV. PRIMA PIONEER",
+        "status": "Aktif",
+        "subDetail": "Bulk Carrier"
+      },
+      {
+        "id": "43",
+        "kode": "MV-043",
+        "nama": "MV. RAFA",
+        "status": "Aktif",
+        "subDetail": "Bulk Carrier"
+      },
+      {
+        "id": "44",
+        "kode": "MV-044",
+        "nama": "MV. SAMI",
+        "status": "Aktif",
+        "subDetail": "Bulk Carrier"
+      },
+      {
+        "id": "45",
+        "kode": "MV-045",
+        "nama": "MV. SHENG TAI",
+        "status": "Aktif",
+        "subDetail": "Bulk Carrier"
+      },
+      {
+        "id": "46",
+        "kode": "MV-046",
+        "nama": "MV. SINAR KUTA",
+        "status": "Aktif",
+        "subDetail": "Bulk Carrier"
+      },
+      {
+        "id": "47",
+        "kode": "MV-047",
+        "nama": "MV. SKY FEE",
+        "status": "Aktif",
+        "subDetail": "Bulk Carrier"
+      },
+      {
+        "id": "48",
+        "kode": "MV-048",
+        "nama": "MV. UNITAMA LILY",
+        "status": "Aktif",
+        "subDetail": "Bulk Carrier"
+      },
+      {
+        "id": "49",
+        "kode": "MV-049",
+        "nama": "MV. UNITY HARMONY",
+        "status": "Aktif",
+        "subDetail": "Bulk Carrier"
+      },
+      {
+        "id": "50",
+        "kode": "MV-050",
+        "nama": "MV. UNITY SPIRIT",
+        "status": "Aktif",
+        "subDetail": "Bulk Carrier"
+      },
+      {
+        "id": "51",
+        "kode": "MV-051",
+        "nama": "MV. VIET THUAN 56-05",
+        "status": "Aktif",
+        "subDetail": "Bulk Carrier"
+      },
+      {
+        "id": "52",
+        "kode": "MV-052",
+        "nama": "MV. YIN HAO",
+        "status": "Aktif",
+        "subDetail": "Bulk Carrier"
+      },
+      {
+        "id": "53",
+        "kode": "MV-053",
+        "nama": "MV. ZHE HAI 517",
+        "status": "Aktif",
+        "subDetail": "Bulk Carrier"
       }
     ]
   },
@@ -1116,7 +2007,7 @@
       "pnbpBarangType": "Bebas PNBP (Jetty CEP)",
       "pnbpBarangAmount": 0,
       "status": "Aktif",
-      "notes": "PBM Rp 10.500/MT, Fender 400/MT, Mooring 500/MT. Jetty CEP bebas PNBP barang."
+      "notes": "Jasa Bongkar Muat Lokal Rp 10.500/MT; Ekspor USD 0,75/MT x Kurs Final. Fender Rp 400/MT, Mooring Rp 500/MT. Waiting TKBM Rp 137.500/jam, Demurrage Team Mooring Rp 12.000.000/hari. Jetty CEP bebas PNBP barang. (Masterdata Monrep 2026)"
     },
     {
       "id": "RATE-CEP-002",
@@ -1129,7 +2020,11 @@
       "rkbmBongkarFee": 500000,
       "chargeUnit": "/MT",
       "status": "Aktif",
-      "notes": "RKBM Muat Rp 250/MT DSR, RKBM Bongkar Rp 500.000 flat."
+      "notes": "RKBM Muat Rp 250/MT x Final DSR, RKBM Bongkar Rp 500.000/dokumen (Monrep RKBM 2026, berlaku sejak 1 Juli 2025).",
+      "rkbmMuatPerTon": 250,
+      "rkbmMuatChargeUnit": "/MT",
+      "rkbmBongkarPerDoc": 500000,
+      "rkbmBongkarChargeUnit": "/Document"
     },
     {
       "id": "RATE-CEP-003",
@@ -1189,12 +2084,16 @@
       "location": "Muara Berau",
       "customerId": "ADP",
       "customerName": "PT ADP",
-      "rkbmMuatPrivateFee": 350000,
-      "rkbmMuatPublicFee": 350000,
+      "rkbmMuatPrivateFee": 250,
+      "rkbmMuatPublicFee": 250,
       "rkbmBongkarFee": 500000,
-      "chargeUnit": "/Document",
+      "chargeUnit": "/MT",
       "status": "Aktif",
-      "notes": "Tarif RKBM ADP Standar Rp 350.000 Muat, Rp 500.000 Bongkar."
+      "notes": "RKBM Muat Rp 250/MT x Final DSR (Monrep RKBM 2026: 10 invoice ADP), RKBM Bongkar Rp 500.000/dokumen.",
+      "rkbmMuatPerTon": 250,
+      "rkbmMuatChargeUnit": "/MT",
+      "rkbmBongkarPerDoc": 500000,
+      "rkbmBongkarChargeUnit": "/Document"
     }
   ],
   "pnbpPortRates": [
