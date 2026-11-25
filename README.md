@@ -73,7 +73,7 @@ Data user (order, master data, tarif) hanya ada di database, jadi backup **wajib
 - **Restore darurat:** hentikan backend, lalu `npm run db:restore -- backups\<file>.dump --confirm armada_dev`.
   Kondisi saat ini dibackup dulu (label `pre-restore`), database dibuat ulang dari file, berkas unggahan
   yang hilang dikembalikan dari cermin. Nyalakan backend lagi setelah selesai.
-- `pg_dump`/`pg_restore` dicari di `PG_BIN_DIR`, PATH, lalu `C:\Program Files\PostgreSQL\<versi>in`
+- `pg_dump`/`pg_restore` dicari di `PG_BIN_DIR`, PATH, lalu `C:\Program Files\PostgreSQL\<versi>\bin`
   (versi client harus >= versi server, yaitu 18).
 
 ## Akun & role
