@@ -1534,13 +1534,6 @@
         "nama": "Jetty ADP (Kutai Lama)",
         "subDetail": "Dermaga II PT Alfara Delta Persada",
         "status": "Aktif"
-      },
-      {
-        "id": "5",
-        "kode": "POL-005",
-        "nama": "Jetty Alfara Delta Persada",
-        "subDetail": "Kutai Lama, Dermaga II - Jetty Muat PT ADP",
-        "status": "Aktif"
       }
     ],
     "pod": [

@@ -89,6 +89,39 @@ const text = (value: unknown, fallback = '') =>
 const generatePassword = () =>
   randomBytes(12).toString('base64url').replace(/[-_]/g, 'x').slice(0, 14);
 
+/** Tolak seed-data.json yang punya ID ganda: dengan upsert, baris terakhir diam-diam menimpa yang pertama. */
+function assertUniqueIds(data: SeedData) {
+  const groups: Array<[string, Json[]]> = [
+    ...Object.entries(data.masterData).map(
+      ([resource, items]) =>
+        [`masterData.${resource}`, items] as [string, Json[]],
+    ),
+    ['contractRates', data.contractRates],
+    ['pnbpPortRates', data.pnbpPortRates],
+  ];
+  const problems: string[] = [];
+  for (const [name, items] of groups) {
+    const seen = new Map<string, string>();
+    for (const item of items) {
+      const id = text(item.id);
+      if (!id) continue;
+      const label =
+        text(item.nama) || text(item.customerName) || text(item.portName);
+      const first = seen.get(id);
+      if (first !== undefined) {
+        problems.push(`${name}: id "${id}" dipakai "${first}" dan "${label}"`);
+      } else {
+        seen.set(id, label);
+      }
+    }
+  }
+  if (problems.length > 0) {
+    throw new Error(
+      `seed-data.json punya ID ganda (database tidak diubah):\n- ${problems.join('\n- ')}`,
+    );
+  }
+}
+
 async function seedMaster(data: SeedData, sync: boolean) {
   const count = { created: 0, updated: 0 };
   const track = (existed: boolean) => {
@@ -210,6 +243,7 @@ async function main() {
   const data = JSON.parse(
     readFileSync(join(import.meta.dirname, 'seed-data.json'), 'utf8'),
   ) as SeedData;
+  assertUniqueIds(data);
   await seedMaster(data, process.argv.includes('--sync'));
   await seedAccounts();
 }
