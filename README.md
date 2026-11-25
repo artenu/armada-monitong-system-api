@@ -27,18 +27,30 @@ npm run start:dev             # http://localhost:8000/api/v1
 
 ## Script
 
-| Script                                                                                        | Fungsi                                                                                                                                                     |
-| --------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `npm run start:dev`                                                                           | Server development (auto-reload)                                                                                                                           |
-| `npm run build` / `npm run start:prod`                                                        | Build lalu jalankan versi production                                                                                                                       |
-| `npm run db:up`                                                                               | Nyalakan PostgreSQL development (Docker)                                                                                                                   |
-| `npm run db:migrate -- --name <nama>`                                                         | Buat migrasi baru setelah mengubah `prisma/schema.prisma`                                                                                                  |
-| `npm run db:deploy`                                                                           | Terapkan migrasi (staging/production)                                                                                                                      |
-| `npm run db:seed`                                                                             | Isi master data & akun awal (aman diulang, tidak menimpa data)                                                                                             |
-| `npm run db:seed:sync`                                                                        | Perbarui master data & tarif yang sudah ada agar sama dengan `prisma/seed-data.json` (tidak menghapus; menimpa perubahan dari aplikasi untuk ID yang sama) |
-| `npm test`                                                                                    | Unit test (Vitest)                                                                                                                                         |
-| `npm run lint`                                                                                | Lint (oxlint)                                                                                                                                              |
-| `npm run smoke -- <pw-admin> <pw-sales> <pw-ops> <pw-salesops> <pw-accounting> [pw-direktur]` | Uji alur lengkap ke server yang sedang jalan (**development saja**, membuat order uji)                                                                     |
+| Script                                 | Fungsi                                                                                                                                                     |
+| -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `npm run start:dev`                    | Server development (auto-reload)                                                                                                                           |
+| `npm run build` / `npm run start:prod` | Build lalu jalankan versi production                                                                                                                       |
+| `npm run db:up`                        | Nyalakan PostgreSQL development (Docker)                                                                                                                   |
+| `npm run db:migrate -- --name <nama>`  | Buat migrasi baru setelah mengubah `prisma/schema.prisma`                                                                                                  |
+| `npm run db:deploy`                    | Terapkan migrasi (staging/production)                                                                                                                      |
+| `npm run db:seed`                      | Isi master data & akun awal (aman diulang, tidak menimpa data)                                                                                             |
+| `npm run db:seed:sync`                 | Perbarui master data & tarif yang sudah ada agar sama dengan `prisma/seed-data.json` (tidak menghapus; menimpa perubahan dari aplikasi untuk ID yang sama) |
+| `npm test`                             | Unit test (Vitest)                                                                                                                                         |
+| `npm run lint`                         | Lint (oxlint)                                                                                                                                              |
+| `npm run smoke`                        | Uji alur lengkap (81 skenario) di **database test terpisah** `armada_test` + server test port 8001. Data user di `armada_dev` tidak disentuh               |
+
+## Smoke test (database terpisah)
+
+`npm run smoke` aman dijalankan kapan saja, termasuk saat aplikasi sedang dipakai:
+
+1. build, lalu membuat ulang database `armada_test` (DROP + CREATE) di PostgreSQL yang sama,
+2. migrasi + seed dengan akun uji berpassword tetap (hanya berlaku di `armada_test`),
+3. menyalakan server test di port **8001** dengan folder upload `uploads-smoke/` (dihapus setelah selesai),
+4. menjalankan `scripts/smoke-test.mjs`, lalu mematikan server test.
+
+`armada_test` dibiarkan setelah selesai agar bisa diperiksa di pgAdmin, dan dibuat ulang pada run berikutnya.
+`scripts/smoke-test.mjs` menolak jalan tanpa `SMOKE_BASE_URL`, supaya tidak pernah mengarah ke server development secara tidak sengaja.
 
 ## Akun & role
 

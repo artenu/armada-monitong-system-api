@@ -1,6 +1,17 @@
-// Smoke test end-to-end terhadap server yang sedang berjalan (DEVELOPMENT SAJA: membuat order uji).
-// Pakai: node scripts/smoke-test.mjs <pw-admin> <pw-sales> <pw-ops> <pw-salesops> <pw-accounting>
-const BASE = process.env.SMOKE_BASE_URL ?? 'http://127.0.0.1:8000/api/v1';
+// Smoke test end-to-end terhadap server yang sedang berjalan. Membuat order & user uji.
+// JANGAN dijalankan ke server/database yang dipakai user. Pakai: npm run smoke
+// (scripts/smoke-db.mjs menyiapkan database armada_test + server test di port 8001).
+// Manual: SMOKE_BASE_URL=<url>/api/v1 node scripts/smoke-test.mjs <pw-admin> <pw-sales> <pw-ops> <pw-salesops> <pw-accounting> [pw-direktur]
+import { readFileSync } from 'node:fs';
+
+const BASE = process.env.SMOKE_BASE_URL;
+if (!BASE) {
+  console.error(
+    'SMOKE_BASE_URL wajib diisi. Gunakan "npm run smoke" agar memakai database test terpisah.',
+  );
+  process.exit(1);
+}
+const ORIGIN = new URL(BASE).origin;
 const [adminPw, salesPw, opsPw, salesOpsPw, accPw, direkturPw] =
   process.argv.slice(2);
 let pass = 0;
@@ -355,18 +366,34 @@ check('refresh tanpa cookie -> 401', noCookie.status === 401);
 
 console.log('\n[Master data]');
 const all = await call('GET', '/master', { token: ops.token });
+const expected = JSON.parse(
+  readFileSync(new URL('../prisma/seed-data.json', import.meta.url), 'utf8'),
+);
+const counts = (obj) =>
+  Object.fromEntries(
+    Object.entries(obj ?? {})
+      .map(([k, v]) => [k, v.length])
+      .sort(([a], [b]) => a.localeCompare(b)),
+  );
 check(
-  'GET /master semua resource',
-  all.json.data.customer.length === 12 &&
-    all.json.data.vessel.length === 25 &&
-    all.json.data['tug-boat'].length === 50,
+  'GET /master semua resource sesuai seed-data.json',
+  JSON.stringify(counts(all.json.data)) ===
+    JSON.stringify(counts(expected.masterData)),
+  JSON.stringify(counts(all.json.data)),
 );
 const rates = await call('GET', '/master/contract-rates', {
   token: sales.token,
 });
-check('tarif kontrak 7', rates.json.data.length === 7);
+check(
+  `tarif kontrak ${expected.contractRates.length}`,
+  rates.json.data?.length === expected.contractRates.length,
+  `${rates.status} ${JSON.stringify(rates.json).slice(0, 200)}`,
+);
 const pnbp = await call('GET', '/master/pnbp-rates', { token: acc.token });
-check('tarif PNBP 4', pnbp.json.data.length === 4);
+check(
+  `tarif PNBP ${expected.pnbpPortRates.length}`,
+  pnbp.json.data?.length === expected.pnbpPortRates.length,
+);
 const badRes = await call('GET', '/master/tidak-ada', { token: sales.token });
 check('resource tak dikenal -> 404', badRes.status === 404);
 const newItem = await call('POST', '/master/vessel', {
@@ -461,7 +488,7 @@ check(
   up.status === 201 && /^\/uploads\/[0-9a-f-]+\.pdf$/.test(up.json.data.url),
   JSON.stringify(up.json),
 );
-const fileRes = await fetch('http://127.0.0.1:8000' + up.json.data.url);
+const fileRes = await fetch(ORIGIN + up.json.data.url);
 check(
   'berkas bisa diunduh di /uploads',
   fileRes.status === 200 &&

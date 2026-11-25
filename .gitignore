@@ -3,6 +3,7 @@
 
 # Berkas unggahan pengguna (data, bukan kode) - ikut jadwal backup, bukan git
 /uploads
+/uploads-smoke
 
 # compiled output
 /dist
