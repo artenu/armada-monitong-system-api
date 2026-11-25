@@ -9,7 +9,11 @@ import {
   Put,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
-import { CurrentUser, Roles } from '../auth/auth.decorators.js';
+import {
+  CurrentSessionId,
+  CurrentUser,
+  Roles,
+} from '../auth/auth.decorators.js';
 import type { AuthUser } from '../auth/auth-user.js';
 import { ResponseMessage } from '../common/response.interceptor.js';
 import { CreateUserDto, UpdateUserDto } from './dto/user.dto.js';
@@ -44,8 +48,9 @@ export class UsersController {
     @Param('id') id: string,
     @Body() dto: UpdateUserDto,
     @CurrentUser() actor: AuthUser,
+    @CurrentSessionId() sessionId: string,
   ) {
-    return this.users.update(id, dto, actor);
+    return this.users.update(id, dto, actor, sessionId);
   }
 
   @Patch(':id/status')

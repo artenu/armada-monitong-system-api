@@ -82,6 +82,20 @@ export class AuthController {
     return null;
   }
 
+  /** Logout dari semua perangkat: semua sesi user ini langsung tidak berlaku */
+  @ApiBearerAuth()
+  @Post('logout-all')
+  @HttpCode(200)
+  @ResponseMessage('Semua sesi telah diakhiri')
+  async logoutAll(
+    @CurrentUser() user: AuthUser,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    await this.auth.logoutAll(user);
+    this.clearCookie(res);
+    return null;
+  }
+
   @ApiBearerAuth()
   @Get('me')
   me(@CurrentUser() user: AuthUser) {

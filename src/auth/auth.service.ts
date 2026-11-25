@@ -10,7 +10,10 @@ import { PrismaService } from '../prisma/prisma.service.js';
 import type { AuthUser } from './auth-user.js';
 import type { LoginDto } from './dto/login.dto.js';
 import { PasswordService } from './password.service.js';
-import { RefreshTokenService } from './refresh-token.service.js';
+import {
+  type IssuedToken,
+  RefreshTokenService,
+} from './refresh-token.service.js';
 
 export interface SessionResult {
   user: AuthUser;
@@ -93,23 +96,33 @@ export class AuthService {
       );
     }
     const { status: _status, ...authUser } = user;
-    return this.createSession(authUser, rotated.token);
+    return this.createSession(authUser, rotated);
   }
 
   logout(refreshToken: string | undefined) {
     return this.refreshTokens.revoke(refreshToken);
   }
 
+  /** Akhiri semua sesi user ini di semua perangkat */
+  async logoutAll(user: AuthUser) {
+    await this.refreshTokens.revokeAllForUser(user.id);
+    await this.audit.record(user, 'auth.logout_all', 'user', user.id);
+  }
+
+  /** Access token membawa `sid` agar JwtAuthGuard bisa mengecek sesinya masih aktif */
   private async createSession(
     user: AuthUser,
-    refreshToken: string,
+    issued: IssuedToken,
   ): Promise<SessionResult> {
-    const token = await this.jwt.signAsync({ sub: user.id });
+    const token = await this.jwt.signAsync({
+      sub: user.id,
+      sid: issued.sessionId,
+    });
     return {
       user,
       token,
       expiresIn: this.config.getOrThrow<string>('JWT_ACCESS_TTL'),
-      refreshToken,
+      refreshToken: issued.token,
     };
   }
 }

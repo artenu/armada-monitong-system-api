@@ -37,7 +37,13 @@ async function call(method, path, { token, body, cookie, form } = {}) {
 }
 
 async function login(email, password) {
-  const r = await call('POST', '/auth/login', { body: { email, password } });
+  let r = await call('POST', '/auth/login', { body: { email, password } });
+  if (r.status === 429) {
+    // Batas login (throttler) tercapai: tunggu jendela 1 menit berikutnya
+    console.log('  ...  batas login tercapai, menunggu 61 detik');
+    await new Promise((done) => setTimeout(done, 61_000));
+    r = await call('POST', '/auth/login', { body: { email, password } });
+  }
   const cookie = r.setCookie ? r.setCookie.split(';')[0] : '';
   return { ...r, token: r.json?.data?.token, cookie };
 }
@@ -337,6 +343,13 @@ check(
   'setelah dipakai ulang, seluruh family dicabut -> 401',
   afterTheft.status === 401,
 );
+const theftAccess = await call('GET', '/auth/me', { token: sales.token });
+check(
+  'access token sesi yang dicuri ikut tidak berlaku -> 401',
+  theftAccess.status === 401,
+);
+// Sesi sales dicabut oleh deteksi pencurian di atas: login ulang untuk tes berikutnya
+Object.assign(sales, await login('sales@armada.local', salesPw));
 const noCookie = await call('POST', '/auth/refresh');
 check('refresh tanpa cookie -> 401', noCookie.status === 401);
 
@@ -511,11 +524,80 @@ if (direkturPw) {
   check('direktur tidak bisa ubah role sendiri -> 409', ownRole.status === 409);
 }
 
+console.log('\n[Sesi]');
+const tmpEmail = 'sesi-uji@armada.local';
+const tmpPw = 'SesiUji-12345';
+const tmpUser = await call('POST', '/users', {
+  token: admin.token,
+  body: { name: 'Uji Sesi', email: tmpEmail, role: 'admin', password: tmpPw },
+});
+check(
+  'buat akun uji sesi',
+  tmpUser.status === 201,
+  JSON.stringify(tmpUser.json),
+);
+const tmpId = tmpUser.json?.data?.id;
+const devA = await login(tmpEmail, tmpPw);
+const devB = await login(tmpEmail, tmpPw);
+const changeOwn = await call('PUT', `/users/${tmpId}`, {
+  token: devA.token,
+  body: { password: tmpPw + 'x' },
+});
+check('ganti password sendiri', changeOwn.status === 200);
+const meA = await call('GET', '/auth/me', { token: devA.token });
+check('sesi yang mengganti password tetap aktif', meA.status === 200);
+const meB = await call('GET', '/auth/me', { token: devB.token });
+check(
+  'sesi perangkat lain langsung berakhir (access token) -> 401',
+  meB.status === 401 &&
+    meB.json.message === 'Sesi berakhir. Silakan login kembali.',
+);
+const refB = await call('POST', '/auth/refresh', { cookie: devB.cookie });
+check('sesi perangkat lain tidak bisa refresh -> 401', refB.status === 401);
+const byAdmin = await call('PUT', `/users/${tmpId}`, {
+  token: admin.token,
+  body: { password: tmpPw },
+});
+check('admin reset password user lain', byAdmin.status === 200);
+const meA2 = await call('GET', '/auth/me', { token: devA.token });
+check(
+  'password direset admin -> semua sesi user berakhir',
+  meA2.status === 401,
+);
+const devC = await login(tmpEmail, tmpPw);
+const devD = await login(tmpEmail, tmpPw);
+const logoutAll = await call('POST', '/auth/logout-all', { token: devC.token });
+check('logout semua perangkat', logoutAll.status === 200);
+const [meC, meD, refD] = await Promise.all([
+  call('GET', '/auth/me', { token: devC.token }),
+  call('GET', '/auth/me', { token: devD.token }),
+  call('POST', '/auth/refresh', { cookie: devD.cookie }),
+]);
+check(
+  'setelah logout semua: semua token & refresh -> 401',
+  meC.status === 401 && meD.status === 401 && refD.status === 401,
+);
+const devE = await login(tmpEmail, tmpPw);
+await call('PATCH', `/users/${tmpId}/status`, { token: admin.token });
+const meE = await call('GET', '/auth/me', { token: devE.token });
+check('akun dinonaktifkan -> token langsung 401', meE.status === 401);
+const delTmp = await call('DELETE', `/users/${tmpId}`, { token: admin.token });
+check('hapus akun uji sesi', delTmp.status === 200);
+const forged = await call('GET', '/auth/me', {
+  token: admin.token.slice(0, -2) + (admin.token.endsWith('AA') ? 'BB' : 'AA'),
+});
+check('token dimodifikasi -> 401', forged.status === 401);
+
 console.log('\n[Logout]');
 const out = await call('POST', '/auth/logout', { cookie: ops.cookie });
 check('logout', out.status === 200);
 const afterLogout = await call('POST', '/auth/refresh', { cookie: ops.cookie });
 check('refresh setelah logout -> 401', afterLogout.status === 401);
+const tokenAfterLogout = await call('GET', '/auth/me', { token: ops.token });
+check(
+  'access token langsung tidak berlaku setelah logout -> 401',
+  tokenAfterLogout.status === 401,
+);
 
 console.log(`\nHasil: ${pass} lolos, ${fail} gagal`);
 process.exit(fail ? 1 : 0);

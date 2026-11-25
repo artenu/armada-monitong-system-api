@@ -4,7 +4,7 @@ import {
   SetMetadata,
 } from '@nestjs/common';
 import type { UserRole } from '../generated/prisma/client.js';
-import type { AuthUser } from './auth-user.js';
+import type { AuthenticatedRequest, AuthUser } from './auth-user.js';
 
 export const IS_PUBLIC_KEY = 'isPublic';
 export const ROLES_KEY = 'roles';
@@ -30,5 +30,11 @@ export const Roles = (...roles: UserRole[]) => SetMetadata(ROLES_KEY, roles);
 /** User yang sedang login (diisi JwtAuthGuard) */
 export const CurrentUser = createParamDecorator(
   (_: unknown, ctx: ExecutionContext): AuthUser =>
-    ctx.switchToHttp().getRequest<{ user: AuthUser }>().user,
+    ctx.switchToHttp().getRequest<AuthenticatedRequest>().user,
+);
+
+/** ID sesi login yang sedang dipakai (diisi JwtAuthGuard) */
+export const CurrentSessionId = createParamDecorator(
+  (_: unknown, ctx: ExecutionContext): string =>
+    ctx.switchToHttp().getRequest<AuthenticatedRequest>().sessionId,
 );

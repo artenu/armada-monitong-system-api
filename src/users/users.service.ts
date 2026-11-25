@@ -96,7 +96,16 @@ export class UsersService {
     return this.toResponse(user);
   }
 
-  async update(id: string, dto: UpdateUserDto, actor: AuthUser) {
+  /**
+   * @param actorSessionId sesi yang sedang dipakai actor; dipertahankan bila
+   *   actor mengganti password-nya sendiri (sesi lain tetap dicabut)
+   */
+  async update(
+    id: string,
+    dto: UpdateUserDto,
+    actor: AuthUser,
+    actorSessionId?: string,
+  ) {
     const target = await this.getOrThrow(id);
     const role = dto.role ?? target.role;
     const status = dto.status ?? target.status;
@@ -132,7 +141,10 @@ export class UsersService {
 
     // Sesi lama dicabut bila password diganti atau akun dinonaktifkan
     if (passwordChanged || status !== 'Aktif') {
-      await this.refreshTokens.revokeAllForUser(id);
+      await this.refreshTokens.revokeAllForUser(
+        id,
+        id === actor.id ? actorSessionId : undefined,
+      );
     }
     await this.audit.record(actor, 'user.update', 'user', id, {
       role,

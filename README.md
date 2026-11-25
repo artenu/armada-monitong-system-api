@@ -37,7 +37,7 @@ npm run start:dev             # http://localhost:8000/api/v1
 | `npm run db:seed` | Isi master data & akun awal (aman diulang, tidak menimpa data) |
 | `npm test` | Unit test (Vitest) |
 | `npm run lint` | Lint (oxlint) |
-| `npm run smoke -- <pw-admin> <pw-sales> <pw-ops> <pw-salesops> <pw-accounting>` | Uji alur lengkap ke server yang sedang jalan (**development saja**, membuat order uji) |
+| `npm run smoke -- <pw-admin> <pw-sales> <pw-ops> <pw-salesops> <pw-accounting> [pw-direktur]` | Uji alur lengkap ke server yang sedang jalan (**development saja**, membuat order uji) |
 
 ## Akun & role
 
@@ -84,9 +84,25 @@ Bila alur di frontend berubah, ubah file itu saja.
 - `POST /auth/login` → `{ user, token, expiresIn }`. `token` = access token JWT (15 menit), disimpan frontend di memori.
 - Refresh token dikirim sebagai cookie **httpOnly** `armada_refresh` (path `/api/v1/auth`, 7 hari), dirotasi setiap dipakai.
   Token lama yang dipakai ulang mencabut seluruh sesi turunannya (deteksi pencurian).
-- `POST /auth/refresh` (saat aplikasi dimuat & saat 401), `POST /auth/logout`, `GET /auth/me`.
+- `POST /auth/refresh` (saat aplikasi dimuat & saat 401), `POST /auth/logout`, `POST /auth/logout-all` (semua perangkat), `GET /auth/me`.
+- **Sesi di server:** setiap login = satu sesi (family refresh token) di tabel `refresh_tokens`. Access token membawa ID sesi (`sid`),
+  dan **setiap request** mengecek sesi itu masih aktif serta akun masih `Aktif`. Jadi logout, logout semua perangkat,
+  ganti/reset password, nonaktif, dan hapus akun **langsung berlaku**, tanpa menunggu token 15 menit habis.
+  User yang mengganti password-nya sendiri tetap login di perangkat yang dipakai; perangkat lain dikeluarkan.
 - Password di-hash **argon2id**; pengecekan login memakai hash dummy agar tidak membocorkan email terdaftar.
-- Login & refresh dibatasi throttler. Akun nonaktif/diganti password langsung kehilangan sesinya.
+- Login (10/menit) & refresh (30/menit) dibatasi throttler.
+
+### Hak akses per endpoint
+
+| Endpoint | Siapa |
+| --- | --- |
+| `POST /auth/login`, `/auth/refresh`, `/auth/logout`, `GET /health` | Publik |
+| `GET /auth/me`, `POST /auth/logout-all`, `POST /files`, `GET /orders`, `GET /orders/:id`, `GET /master/**` | Semua user login |
+| `POST/PUT/DELETE /orders`, `POST /orders/:id/send-to-ops` | sales, sales_ops |
+| `/operational/orders/**` | operasional, sales_ops |
+| `/billing/orders/**` | finance |
+| `POST/DELETE /master/**`, `/users/**` | admin |
+| Semua endpoint di atas | admin, direktur (`FULL_ACCESS_ROLES`) |
 
 ## Format respons
 
