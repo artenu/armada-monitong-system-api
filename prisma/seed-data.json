@@ -2028,16 +2028,13 @@
       "customerName": "PT CEP",
       "pbmRatePerTon": 10500,
       "pbmEksporUsdPerTon": 0.75,
-      "fenderFee": 400,
-      "mooringFee": 500,
-      "fenderMooringFee": 900,
       "waitingTkbmPerHour": 137500,
       "demurrageMooringPerDay": 12000000,
       "pnbpAlatBerat": 35000000,
       "pnbpBarangType": "Bebas PNBP (Jetty CEP)",
       "pnbpBarangAmount": 0,
       "status": "Aktif",
-      "notes": "Jasa Bongkar Muat Lokal Rp 10.500/MT; Ekspor USD 0,75/MT x Kurs Final. Fender Rp 400/MT, Mooring Rp 500/MT. Waiting TKBM Rp 137.500/jam, Demurrage Team Mooring Rp 12.000.000/hari (>7 hari). Jetty CEP bebas PNBP Jasa PBM Rp 62,31/MT. (Masterdata Monrep 2026)"
+      "notes": "Jasa Bongkar Muat Lokal Rp 10.500/MT; Ekspor USD 0,75/MT x Kurs Final. Waiting TKBM Rp 137.500/jam, Demurrage Team Mooring Rp 12.000.000/hari (>7 hari). Jetty CEP bebas PNBP Jasa PBM Rp 62,31/MT. (Masterdata Monrep 2026) Fender & Mooring ditagihkan ke PT ZADIN (RATE-ZMA-001)."
     },
     {
       "id": "RATE-CEP-004",
@@ -2050,6 +2047,23 @@
       "pnbpAlatBerat": 35000000,
       "status": "Aktif",
       "notes": "Harga Acuan Muara Jawa: Jasa Bongkar Muat Lokal Rp 10.800/MT, PNBP Pengawasan Rp 47,13/MT, PNBP STS Rp 600/MT, PNBP Alat Berat Rp 35.000.000. (Masterdata Monrep 2026)"
+    },
+    {
+      "service": "LAYANAN RKBM MUAT/BONGKAR/MUAT & BONGKAR",
+      "customerId": "CEP",
+      "customerName": "PT CEP",
+      "rkbmMuatPrivateFee": 250,
+      "rkbmMuatPublicFee": 350000,
+      "rkbmBongkarFee": 500000,
+      "chargeUnit": "/MT",
+      "status": "Aktif",
+      "rkbmMuatPerTon": 250,
+      "rkbmMuatChargeUnit": "/MT",
+      "rkbmBongkarPerDoc": 500000,
+      "rkbmBongkarChargeUnit": "/Document",
+      "id": "RATE-CEP-005",
+      "location": "Muara Jawa",
+      "notes": "RKBM Muat Rp 250/MT x Final DSR di Muara Jawa (Monrep RKBM 2026: 14 baris CEP Muara Jawa), RKBM Bongkar Rp 500.000/dokumen."
     },
     {
       "id": "RATE-CEP-002",
@@ -2090,7 +2104,7 @@
       "cooFee": 2000000,
       "chargeUnit": "/Document",
       "status": "Aktif",
-      "notes": "PPJK Rp 12 Juta/dokumen via tongkang LL series."
+      "notes": "PPJK Rp 12.000.000/dokumen (Monrep PPJK 2026: invoice 025, 026, 029/.../AEI/ALI via tongkang LL series; invoice 027/24082026 Rp 10.000.000)."
     },
     {
       "id": "RATE-AEI-002",
@@ -2100,9 +2114,6 @@
       "customerName": "PT AEI",
       "pbmRatePerTon": 10500,
       "pbmEksporUsdPerTon": 0.75,
-      "fenderFee": 400,
-      "mooringFee": 500,
-      "fenderMooringFee": 900,
       "waitingTkbmPerHour": 112500,
       "demurrageMooringPerDay": 8000000,
       "status": "Aktif",
@@ -2117,7 +2128,41 @@
       "kepabeananFee": 10000000,
       "chargeUnit": "/Document",
       "status": "Aktif",
-      "notes": "Harga Acuan PPJK >1 Juli 2025 (To AMP) Rp 10.000.000/dokumen. (Masterdata Monrep 2026)"
+      "notes": "Harga Acuan PPJK >1 Juli 2025 (To AMP) Rp 10.000.000/dokumen. (Masterdata Monrep 2026) Invoice PPJK kapal CEP ditagihkan ke PT AMP (Monrep PPJK 2026: 14 invoice .../AMP/ALI, Rp 10.000.000)."
+    },
+    {
+      "service": "LAYANAN RKBM MUAT/BONGKAR/MUAT & BONGKAR",
+      "rkbmMuatPrivateFee": 250,
+      "rkbmMuatPublicFee": 350000,
+      "rkbmBongkarFee": 500000,
+      "chargeUnit": "/MT",
+      "status": "Aktif",
+      "rkbmMuatPerTon": 250,
+      "rkbmMuatChargeUnit": "/MT",
+      "rkbmBongkarPerDoc": 500000,
+      "rkbmBongkarChargeUnit": "/Document",
+      "id": "RATE-AMP-002",
+      "customerId": "AMP",
+      "customerName": "PT AMP",
+      "location": "Muara Berau",
+      "notes": "RKBM kapal CEP ditagihkan ke PT AMP (invoice NNN/DDMMYYYY/AMP/ALI). Muat Rp 250/MT x Final DSR, Bongkar Rp 500.000/dokumen (Monrep RKBM 2026: 54 baris Muara Berau)."
+    },
+    {
+      "service": "LAYANAN RKBM MUAT/BONGKAR/MUAT & BONGKAR",
+      "rkbmMuatPrivateFee": 250,
+      "rkbmMuatPublicFee": 350000,
+      "rkbmBongkarFee": 500000,
+      "chargeUnit": "/MT",
+      "status": "Aktif",
+      "rkbmMuatPerTon": 250,
+      "rkbmMuatChargeUnit": "/MT",
+      "rkbmBongkarPerDoc": 500000,
+      "rkbmBongkarChargeUnit": "/Document",
+      "id": "RATE-AMP-003",
+      "customerId": "AMP",
+      "customerName": "PT AMP",
+      "location": "Muara Jawa",
+      "notes": "RKBM kapal CEP ditagihkan ke PT AMP (invoice NNN/DDMMYYYY/AMP/ALI). Muat Rp 250/MT x Final DSR, Bongkar Rp 500.000/dokumen (Monrep RKBM 2026: 14 baris Muara Jawa)."
     },
     {
       "id": "RATE-PTB-001",
@@ -2126,13 +2171,10 @@
       "customerId": "PTB",
       "customerName": "PT BUP PTB",
       "pbmRatePerTon": 11000,
-      "fenderFee": 400,
-      "mooringFee": 500,
-      "fenderMooringFee": 900,
       "pnbpBarangType": "Gratis",
       "pnbpPengawasanType": "Gratis",
       "status": "Aktif",
-      "notes": "Tarif BUP PTB Lokal Rp 11.000/MT; Ekspor USD 0,75/MT x Kurs Final (Invoice 040/29062026/PTB/GSB: MV Ever Success 56.500 MT x 0,75 x Rp 17.962 = Rp 761.139.750). PNBP gratis.",
+      "notes": "Tarif BUP PTB Lokal Rp 11.000/MT; Ekspor USD 0,75/MT x Kurs Final (Invoice 040/29062026/PTB/GSB: MV Ever Success 56.500 MT x 0,75 x Rp 17.962 = Rp 761.139.750). PNBP gratis. Fender & Mooring ditagihkan ke PT ZADIN (RATE-ZMA-001).",
       "pbmEksporUsdPerTon": 0.75
     },
     {
@@ -2141,12 +2183,12 @@
       "location": "Muara Berau",
       "customerId": "ZMA",
       "customerName": "PT ZADIN",
-      "fenderFee": 400,
-      "mooringFee": 500,
+      "fenderFee": 500,
+      "mooringFee": 400,
       "fenderMooringFee": 900,
       "chargeUnit": "/MT",
       "status": "Aktif",
-      "notes": "Jasa Fender & Mooring kapal PBM Muara Berau ditagihkan ke PT Zadin Mitra Abadi (invoice terpisah per jasa). Harga acuan Monrep: Fender Rp 400/MT, Mooring Rp 500/MT. Catatan: invoice 025 & 026/29062026/ZMA/GSB (MV Ever Success) memakai Fender 500 & Mooring 400."
+      "notes": "Satu-satunya customer Jasa Fender & Mooring. Harga sesuai invoice 025/29062026/ZMA/GSB (Fender 56.500 MT x Rp 500 = Rp 28.250.000) dan 026/29062026/ZMA/GSB (Mooring 56.500 MT x Rp 400 = Rp 22.600.000), MV Ever Success."
     },
     {
       "id": "RATE-KS-001",
@@ -2164,7 +2206,6 @@
     {
       "id": "RATE-ADP-001",
       "service": "LAYANAN RKBM MUAT/BONGKAR/MUAT & BONGKAR",
-      "location": "Muara Berau",
       "customerId": "ADP",
       "customerName": "PT ADP",
       "rkbmMuatPrivateFee": 250,
@@ -2172,7 +2213,7 @@
       "rkbmBongkarFee": 500000,
       "chargeUnit": "/MT",
       "status": "Aktif",
-      "notes": "RKBM Muat Rp 250/MT x Final DSR (Monrep RKBM 2026: 10 invoice ADP), RKBM Bongkar Rp 500.000/dokumen.",
+      "notes": "RKBM Muat Rp 250/MT x Final DSR, berlaku semua lokasi (Monrep RKBM 2026: 10 invoice .../ADP/ALI, drop point Lainnya, Muara Berau, Sangkulirang). RKBM Bongkar Rp 500.000/dokumen.",
       "rkbmMuatPerTon": 250,
       "rkbmMuatChargeUnit": "/MT",
       "rkbmBongkarPerDoc": 500000,
