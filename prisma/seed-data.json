@@ -5,13 +5,13 @@
         "id": "1",
         "kode": "CEP",
         "nama": "PT CEP",
-        "namaLengkap": "PT Cristian Eka Pratama",
-        "bidangUsaha": "Tambang batu bara Kutai Barat (Petrosea Group).",
+        "kontak": "08170717888",
         "status": "Aktif",
-        "kontak": "08382183214421",
-        "picName": "Hendra",
+        "picName": "Theresia / Rocky",
         "subDetail": "",
         "npwpDocUrl": "",
+        "bidangUsaha": "Tambang batu bara Kutai Barat (Petrosea Group).",
+        "namaLengkap": "PT Cristian Eka Pratama",
         "npwpDocName": ""
       },
       {
@@ -26,13 +26,15 @@
         "id": "3",
         "kode": "ADP",
         "nama": "PT ADP",
-        "namaLengkap": "PT Alfara Delta Persada",
-        "bidangUsaha": "Pertambangan batu bara Anggana, Kutai Kartanegara.",
-        "status": "Aktif",
         "alamat": "Ruko Plaza 5 Blok D-12, Jl. Marga Guna Raya, RT 003 RW 011, Kebayoran Baru, Jakarta Selatan",
+        "kontak": "0818955703",
+        "status": "Aktif",
+        "picName": "Jessica",
+        "bidangUsaha": "Pertambangan batu bara Anggana, Kutai Kartanegara.",
+        "namaLengkap": "PT Alfara Delta Persada",
         "alamatCabang": "Jl. Batara Agung Dewa Sakti, Ds. Kutai Lama, Kec. Anggana, Kab. Kutai Kartanegara, Kalimantan Timur",
-        "kontak": "021-7246966 / 0541-6753823",
-        "picName": "Dody Triyono (Direktur Utama)"
+        "kontakKantor": "021-7246966 / 0541-6753823",
+        "direkturUtama": "Dody Triyono"
       },
       {
         "id": "4",
@@ -115,6 +117,60 @@
         "namaLengkap": "PT Batubara Global Energy",
         "bidangUsaha": "Perdagangan & pengangkutan batubara (IUP OPK).",
         "status": "Aktif"
+      },
+      {
+        "id": "14",
+        "kode": "KSM",
+        "nama": "PT KSM",
+        "kontak": "082210170515",
+        "status": "Aktif",
+        "picName": "Nelson Kristianto",
+        "namaLengkap": "PT Kartika Selabumi Mining"
+      },
+      {
+        "id": "15",
+        "kode": "IBK",
+        "nama": "PT IBK",
+        "kontak": "08129384786",
+        "status": "Aktif",
+        "picName": "Bu Elly",
+        "namaLengkap": "PT Insani Baraperkasa"
+      },
+      {
+        "id": "16",
+        "kode": "MHU",
+        "nama": "PT MHU",
+        "kontak": "08111102027",
+        "status": "Aktif",
+        "picName": "Pak Yusron",
+        "namaLengkap": "PT Multi Harapan Utama"
+      },
+      {
+        "id": "17",
+        "kode": "IBP",
+        "nama": "PT IBP",
+        "kontak": "081808000278",
+        "status": "Aktif",
+        "picName": "Dewomulyo",
+        "namaLengkap": "PT Indo Bara Pratama"
+      },
+      {
+        "id": "18",
+        "kode": "FSP",
+        "nama": "PT FSP",
+        "kontak": "08118123295",
+        "status": "Aktif",
+        "picName": "Sanjay Chauhan",
+        "namaLengkap": "PT Fajar Sakti Prima"
+      },
+      {
+        "id": "19",
+        "kode": "BKL",
+        "nama": "Bara Kumala",
+        "kontak": "08125349821",
+        "status": "Aktif",
+        "picName": "Lista",
+        "namaLengkap": "Bara Kumala"
       }
     ],
     "tug-boat": [
@@ -1532,8 +1588,19 @@
         "id": "5",
         "kode": "POL-005",
         "nama": "Jetty ADP (Kutai Lama)",
-        "subDetail": "Dermaga II PT Alfara Delta Persada",
-        "status": "Aktif"
+        "kontak": "082133883336",
+        "status": "Aktif",
+        "picName": "Beni",
+        "subDetail": "Dermaga II PT Alfara Delta Persada"
+      },
+      {
+        "id": "6",
+        "kode": "POL-006",
+        "nama": "Jetty Kedap Sayaq",
+        "kontak": "081257115757",
+        "status": "Aktif",
+        "picName": "Rangga",
+        "subDetail": "Jetty Muat PT Kedap Sayaaq (KS)"
       }
     ],
     "pod": [
