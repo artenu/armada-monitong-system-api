@@ -1,4 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
+import { hasFullAccess } from '../auth/auth.decorators.js';
 import { randomUUID } from 'node:crypto';
 import { AuditService } from '../audit/audit.service.js';
 import type { AuthUser } from '../auth/auth-user.js';
@@ -93,6 +94,28 @@ export class MasterService {
   async saveItem(resource: string, body: unknown, user: AuthUser) {
     const res = this.assertResource(resource);
     const payload = await validateFlexible(MasterItemCoreDto, body);
+    if (hasFullAccess(user.role)) {
+      return this.persistItem(res, payload, user);
+    }
+    // Non-admin (quick add dari form order): hanya boleh MENAMBAH item baru.
+    // ID & kode dari browser diabaikan agar tidak bisa menimpa item lain; bila nama yang
+    // sama (tanpa beda huruf besar/kecil) sudah ada, item itu yang dikembalikan.
+    const nama = String(payload.nama).trim();
+    const same = await this.prisma.masterItem.findFirst({
+      where: { resource: res, nama: { equals: nama, mode: 'insensitive' } },
+    });
+    if (same) {
+      return this.toItem(same);
+    }
+    const { id: _id, kode: _kode, ...fields } = payload;
+    return this.persistItem(res, fields, user);
+  }
+
+  private async persistItem(
+    res: MasterResource,
+    payload: Record<string, unknown>,
+    user: AuthUser,
+  ) {
     const itemId = optionalString(payload.id) ?? randomUUID();
     const existing = await this.prisma.masterItem.findUnique({
       where: { resource_itemId: { resource: res, itemId } },

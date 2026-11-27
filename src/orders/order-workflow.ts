@@ -98,3 +98,69 @@ export const nextOrderNo = (
   }, 0);
   return `${prefix}${String(max + 1).padStart(3, '0')}`;
 };
+
+/** Satu entri log perpindahan lokasi armada (MOM 25 Nov poin 7) */
+export interface PositionHistoryEntry {
+  position: string;
+  /** Waktu posisi menurut petugas (YYYY-MM-DDTHH:mm) */
+  timestamp: string;
+  notes?: string;
+  /** Nama user dari sesi login (bukan dari body request) */
+  updatedBy?: string;
+}
+
+const isEntry = (v: unknown): v is PositionHistoryEntry =>
+  typeof v === 'object' &&
+  v !== null &&
+  typeof (v as PositionHistoryEntry).position === 'string' &&
+  typeof (v as PositionHistoryEntry).timestamp === 'string';
+
+const textOf = (v: unknown) =>
+  typeof v === 'string' && v.trim() ? v.trim() : undefined;
+
+/**
+ * Susun log perpindahan lokasi di SERVER, dari data order yang tersimpan (bukan dari
+ * `positionHistory` kiriman browser yang bisa sudah usang). Aturannya sama dengan frontend:
+ * - log kosong + posisi lama berbeda dari posisi baru -> posisi lama dicatat dulu,
+ * - entri baru ditambahkan bila posisi atau waktunya berbeda dari entri terakhir.
+ * Mengembalikan `undefined` bila request tidak mengubah posisi (log dibiarkan apa adanya).
+ */
+export const mergePositionHistory = (
+  stored: Record<string, unknown>,
+  payload: Record<string, unknown>,
+  userName: string,
+  now: Date = new Date(),
+): PositionHistoryEntry[] | undefined => {
+  const position = textOf(payload.position);
+  if (!position) {
+    return undefined;
+  }
+  const timestamp =
+    textOf(payload.positionUpdatedAt) ?? now.toISOString().slice(0, 16);
+  const history = Array.isArray(stored.positionHistory)
+    ? stored.positionHistory.filter(isEntry)
+    : [];
+
+  const previous = textOf(stored.position);
+  if (history.length === 0 && previous && previous !== position) {
+    history.push({
+      position: previous,
+      timestamp:
+        textOf(stored.positionUpdatedAt) ??
+        textOf(stored.startDate) ??
+        timestamp,
+      notes: textOf(stored.operationalNotes),
+    });
+  }
+
+  const last = history.at(-1);
+  if (!last || last.position !== position || last.timestamp !== timestamp) {
+    history.push({
+      position,
+      timestamp,
+      notes: textOf(payload.operationalNotes),
+      updatedBy: userName,
+    });
+  }
+  return history;
+};

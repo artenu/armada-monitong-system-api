@@ -2280,11 +2280,12 @@
       "rkbmBongkarFee": 500000,
       "chargeUnit": "/MT",
       "status": "Aktif",
-      "notes": "RKBM Muat Rp 250/MT x Final DSR, berlaku semua lokasi (Monrep RKBM 2026: 10 invoice .../ADP/ALI, drop point Lainnya, Muara Berau, Sangkulirang). RKBM Bongkar Rp 500.000/dokumen.",
+      "notes": "RKBM Muat Rp 250/MT x Final DSR, berlaku Semua Lokasi (Monrep RKBM 2026: 10 invoice .../ADP/ALI, drop point Lainnya, Muara Berau, Sangkulirang). RKBM Bongkar Rp 500.000/dokumen.",
       "rkbmMuatPerTon": 250,
       "rkbmMuatChargeUnit": "/MT",
       "rkbmBongkarPerDoc": 500000,
-      "rkbmBongkarChargeUnit": "/Document"
+      "rkbmBongkarChargeUnit": "/Document",
+      "location": "Semua Lokasi"
     }
   ],
   "pnbpPortRates": [

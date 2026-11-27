@@ -96,9 +96,13 @@ export class MasterController {
     return this.master.findItems(resource);
   }
 
+  /**
+   * Admin/direktur: tambah & ubah. Sales/operasional: hanya TAMBAH item baru
+   * (quick add dari form order); ID & kode dibuat server, nama yang sudah ada dipakai ulang.
+   */
   @Post(':resource')
   @HttpCode(200)
-  @Roles('admin')
+  @Roles('admin', 'sales', 'sales_ops', 'operasional')
   @ApiBody(FLEXIBLE_BODY)
   @ResponseMessage('Data master berhasil disimpan')
   save(

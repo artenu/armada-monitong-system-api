@@ -414,9 +414,16 @@ check(
 );
 const salesMaster = await call('POST', '/master/vessel', {
   token: sales.token,
-  body: { nama: 'X' },
+  body: { id: 'tes-1', nama: 'MV UJI COBA', subDetail: 'DIUBAH SALES' },
 });
-check('non-admin tidak bisa ubah master -> 403', salesMaster.status === 403);
+const tes1 = (
+  await call('GET', '/master/vessel', { token: sales.token })
+).json.data.find((v) => v.id === 'tes-1');
+check(
+  'non-admin tidak bisa mengubah master yang sudah ada',
+  salesMaster.status === 200 && tes1?.subDetail === 'Panamax',
+  JSON.stringify(tes1),
+);
 const delItem = await call('DELETE', '/master/vessel/tes-1', {
   token: admin.token,
 });
@@ -433,6 +440,103 @@ check(
 await call('DELETE', `/master/pnbp-rates/${newPnbp.json.data.id}`, {
   token: admin.token,
 });
+
+console.log('\n[Quick add master dari form order]');
+const qa = await call('POST', '/master/vessel', {
+  token: sales.token,
+  body: {
+    id: '1',
+    kode: 'MV-001',
+    nama: 'MV. QUICK ADD UJI',
+    subDetail: 'Bulk Carrier',
+  },
+});
+check(
+  'sales bisa tambah vessel baru (ID & kode dari server, bukan dari browser)',
+  qa.status === 200 &&
+    qa.json.data.id !== '1' &&
+    qa.json.data.kode !== 'MV-001' &&
+    qa.json.data.nama === 'MV. QUICK ADD UJI',
+  JSON.stringify(qa.json),
+);
+const firstVessel = all.json.data.vessel[0];
+const afterQa = await call('GET', `/master/vessel`, { token: sales.token });
+check(
+  'quick add tidak menimpa item lain dengan ID sama',
+  afterQa.json.data.find((v) => v.id === firstVessel.id)?.nama ===
+    firstVessel.nama,
+);
+const qaDup = await call('POST', '/master/vessel', {
+  token: ops.token,
+  body: { nama: 'mv. quick add uji' },
+});
+check(
+  'nama yang sudah ada dipakai ulang, tidak dobel',
+  qaDup.status === 200 &&
+    qaDup.json.data.id === qa.json.data.id &&
+    afterQa.json.data.filter(
+      (v) => v.nama.toLowerCase() === 'mv. quick add uji',
+    ).length === 1,
+);
+const qaFinance = await call('POST', '/master/vessel', {
+  token: acc.token,
+  body: { nama: 'MV. FINANCE UJI' },
+});
+check('finance tidak bisa tambah master -> 403', qaFinance.status === 403);
+const qaDelete = await call('DELETE', `/master/vessel/${qa.json.data.id}`, {
+  token: sales.token,
+});
+check('sales tidak bisa hapus master -> 403', qaDelete.status === 403);
+await call('DELETE', `/master/vessel/${qa.json.data.id}`, {
+  token: admin.token,
+});
+
+console.log('\n[Log lokasi armada]');
+const trk = await call('POST', '/orders', {
+  token: sales.token,
+  body: {
+    customer: 'PT ADP',
+    service: 'LAYANAN RKBM MUAT/BONGKAR/MUAT & BONGKAR',
+  },
+});
+const trkId = trk.json.data.id;
+await call('POST', `/orders/${trkId}/send-to-ops`, { token: sales.token });
+const pos1 = await call('PUT', `/operational/orders/${trkId}`, {
+  token: ops.token,
+  body: { position: 'Jetty ADP', positionUpdatedAt: '2026-11-27T08:00' },
+});
+const pos2 = await call('PUT', `/operational/orders/${trkId}`, {
+  token: ops.token,
+  body: {
+    position: 'Muara Berau',
+    positionUpdatedAt: '2026-11-27T14:30',
+    operationalNotes: 'Sandar',
+    positionHistory: [{ position: 'PALSU', timestamp: 'x' }],
+  },
+});
+const hist = pos2.json?.data?.positionHistory ?? [];
+check(
+  'log lokasi disusun server: 2 entri, kiriman browser diabaikan',
+  pos1.status === 200 &&
+    pos2.status === 200 &&
+    hist.length === 2 &&
+    hist[0].position === 'Jetty ADP' &&
+    hist[1].position === 'Muara Berau' &&
+    !hist.some((h) => h.position === 'PALSU'),
+  JSON.stringify(hist),
+);
+check(
+  'updatedBy diambil dari user yang login',
+  hist.every((h) => h.updatedBy === ops.json.data.user.name),
+);
+const pos3 = await call('PUT', `/operational/orders/${trkId}`, {
+  token: ops.token,
+  body: { finalDsr: 7500 },
+});
+check(
+  'update tanpa posisi tidak mengubah log',
+  pos3.json?.data?.positionHistory?.length === 2,
+);
 
 console.log('\n[Users]');
 const users = await call('GET', '/users', { token: admin.token });

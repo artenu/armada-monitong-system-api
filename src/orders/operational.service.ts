@@ -6,6 +6,7 @@ import type { CompleteOperationDto } from './dto/order.dto.js';
 import { OperationalCoreDto } from './dto/order.dto.js';
 import {
   DRAFT_STATUS,
+  mergePositionHistory,
   PROTECTED_ORDER_KEYS,
   resolveCompleteStatus,
   resolveOperationalStatus,
@@ -31,9 +32,19 @@ export class OperationalService {
       skipMissing: true,
     });
     const status = resolveOperationalStatus(order.status, payload.status);
+    // Log lokasi disusun server dari data tersimpan; kiriman browser diabaikan
+    const { positionHistory: _fromClient, ...changes } = omitKeys(
+      payload,
+      PROTECTED_ORDER_KEYS,
+    );
+    const positionHistory = mergePositionHistory(
+      (order.data ?? {}) as Record<string, unknown>,
+      changes,
+      user.name,
+    );
     const updated = await this.orders.update(
       order,
-      omitKeys(payload, PROTECTED_ORDER_KEYS),
+      positionHistory ? { ...changes, positionHistory } : changes,
       status,
     );
     await this.audit.record(
